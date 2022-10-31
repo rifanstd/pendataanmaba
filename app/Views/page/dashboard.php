@@ -9,10 +9,23 @@
 </head>
 
 <body>
-    <p>Dashboard</p>
-    <p>Data Tervalidasi</p>
-    <p>Data Belum Validasi</p>
-    <p>Data Admin</p>
+    <!-- list side bar -->
+    <ul>
+        <?php if (in_groups('mahasiswa')) : ?>
+            <li>Data Anda</li>
+            <li>Data Mahasiswa</li>
+        <?php endif; ?>
+        <?php if (in_groups('admin') || in_groups('superadmin')) : ?>
+            <li>Data Mahasiswa</li>
+            <li>Data Fakultas</li>
+            <li>Data Jurusan</li>
+            <li>Data Program Studi</li>
+        <?php endif; ?>
+        <?php if (in_groups('superadmin')) : ?>
+            <li>Data Admin</li>
+        <?php endif; ?>
+        <li>Logout</li>
+    </ul>
 </body>
 
 </html>
