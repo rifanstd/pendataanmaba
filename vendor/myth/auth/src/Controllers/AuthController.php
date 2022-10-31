@@ -2,6 +2,7 @@
 
 namespace Myth\Auth\Controllers;
 
+use App\Models\AdminModel;
 use App\Models\MahasiswaModel;
 use CodeIgniter\Controller;
 use CodeIgniter\Session\Session;
@@ -198,6 +199,14 @@ class AuthController extends Controller
         $mahasiswaModel = new MahasiswaModel();
         $mahasiswaModel->insert($dataMhs);
         // --- 
+
+        // UNtuk admin
+        // $dataAdmin = [
+        //     'nama' => $this->request->getPost('nama'),
+        //     'id_user' => $users->getInsertID(),
+        // ];
+        // $adminModel = new AdminModel();
+        // $adminModel->insert($dataAdmin);
 
         if ($this->config->requireActivation !== null) {
             $activator = service('activator');

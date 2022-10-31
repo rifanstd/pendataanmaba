@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 31, 2022 at 04:16 PM
+-- Generation Time: Oct 31, 2022 at 06:22 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.0.23
 
@@ -32,6 +32,13 @@ CREATE TABLE `admin` (
   `nama` varchar(255) NOT NULL,
   `id_user` int(11) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `nama`, `id_user`) VALUES
+(1, 'Rifan Setiadi', 1);
 
 -- --------------------------------------------------------
 
@@ -95,7 +102,8 @@ CREATE TABLE `auth_groups_users` (
 --
 
 INSERT INTO `auth_groups_users` (`group_id`, `user_id`) VALUES
-(1, 1);
+(1, 1),
+(3, 2);
 
 -- --------------------------------------------------------
 
@@ -117,7 +125,7 @@ CREATE TABLE `auth_logins` (
 --
 
 INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `success`) VALUES
-(1, '::1', 'rfan2442@gmail.com', 1, '2022-10-31 10:14:46', 1);
+(1, '::1', 'yogi@gmail.com', 2, '2022-10-31 12:21:51', 1);
 
 -- --------------------------------------------------------
 
@@ -218,7 +226,7 @@ CREATE TABLE `mahasiswa` (
 --
 
 INSERT INTO `mahasiswa` (`id`, `nama`, `nik`, `npm`, `angkatan`, `validasi`, `id_user`, `prodi_id`, `jurusan_id`, `fakultas_id`) VALUES
-(1, 'Rifan Setiadi', NULL, NULL, 2022, 'Belum', 1, NULL, NULL, NULL);
+(1, 'Yogi Andaru', NULL, NULL, 2022, 'Belum', 2, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -279,7 +287,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `username`, `password_hash`, `nama`, `reset_hash`, `reset_at`, `reset_expires`, `activate_hash`, `status`, `status_message`, `active`, `force_pass_reset`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'rfan2442@gmail.com', 'rifanstd', '$2y$10$FiX9PLXuTWcGdcR4GwpDyeIZhWpX4Cz2K8FVfwu6so7jkT//xWMKy', 'Rifan Setiadi', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-10-31 10:13:47', '2022-10-31 10:13:47', NULL);
+(1, 'rfan2442@gmail.com', 'rifanstd', '$2y$10$m3WZ6f84DD5SIEs.KSBd8eHPOS4iY6yQhDGDqUqbkfXtJtxd3V.j.', 'Rifan Setiadi', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-10-31 12:20:09', '2022-10-31 12:20:09', NULL),
+(2, 'yogi@gmail.com', 'yogi', '$2y$10$7NNnOASM0bCq43n1Pf78Q.w3RIkWN4nHUBXNDwodITCZy5p.nD8W.', 'Yogi Andaru', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-10-31 12:21:31', '2022-10-31 12:21:31', NULL);
 
 --
 -- Indexes for dumped tables
@@ -408,7 +417,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `auth_activation_attempts`
@@ -480,7 +489,7 @@ ALTER TABLE `prodi`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

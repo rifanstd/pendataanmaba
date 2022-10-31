@@ -4,29 +4,30 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class MahasiswaModel extends Model
+class FakultasModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'mahasiswa';
+    protected $table            = 'fakultas';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
-    protected $allowedFields    = ['nama', 'nik', 'npm', 'angkatan', 'validasi', 'id_user', 'prodi_id', 'jurusan_id', 'fakultas_id'];
+    protected $allowedFields    = ['nama_fakultas'];
 
     // Dates
-    // protected $useTimestamps = true;
+    // protected $useTimestamps = false;
     // protected $dateFormat    = 'datetime';
     // protected $createdField  = 'created_at';
     // protected $updatedField  = 'updated_at';
     // protected $deletedField  = 'deleted_at';
 
-    public function getByUserID()
+    public function getByID($id)
     {
-        $mahasiswa = $this->db->table($this->table)
-            ->where('id_user', user_id())
+        $dataFakultas = $this->db->table($this->table)
+            ->where('id', $id)
             ->get()
-            ->getResultArray()[0];
-        return $mahasiswa;
+            ->getResultArray();
+
+        return $dataFakultas;
     }
 }
