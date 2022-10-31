@@ -8,6 +8,7 @@ use CodeIgniter\Session\Session;
 use Myth\Auth\Config\Auth as AuthConfig;
 use Myth\Auth\Entities\User;
 use Myth\Auth\Models\UserModel;
+use CodeIgniter\I18n\Time;
 
 class AuthController extends Controller
 {
@@ -190,6 +191,8 @@ class AuthController extends Controller
         // saat mahasiswa melakukan registrasi akun
         $dataMhs = [
             'nama' => $this->request->getPost('nama'),
+            'angkatan' => Time::now()->getYear(),
+            'validasi' => 'Belum',
             'id_user' => $users->getInsertID(),
         ];
         $mahasiswaModel = new MahasiswaModel();
