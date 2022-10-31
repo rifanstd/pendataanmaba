@@ -5,27 +5,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title><?= $title ?></title>
 </head>
 
 <body>
-    <!-- list side bar -->
-    <ul>
-        <?php if (in_groups('mahasiswa')) : ?>
-            <li>Data Anda</li>
-            <li>Data Mahasiswa</li>
-        <?php endif; ?>
-        <?php if (in_groups('admin') || in_groups('superadmin')) : ?>
-            <li>Data Mahasiswa</li>
-            <li>Data Fakultas</li>
-            <li>Data Jurusan</li>
-            <li>Data Program Studi</li>
-        <?php endif; ?>
-        <?php if (in_groups('superadmin')) : ?>
-            <li>Data Admin</li>
-        <?php endif; ?>
-        <li>Logout</li>
-    </ul>
+    <!-- include sidebar -->
+    <?= $this->include('page/sidebar'); ?>
+
+    <!-- rendersection -->
+    <?= $this->renderSection('content') ?>
+
 </body>
 
 </html>
