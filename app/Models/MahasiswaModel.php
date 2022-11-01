@@ -12,7 +12,7 @@ class MahasiswaModel extends Model
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
-    protected $allowedFields    = ['nama', 'nik', 'npm', 'angkatan', 'validasi', 'id_user', 'prodi_id', 'jurusan_id', 'fakultas_id'];
+    protected $allowedFields    = ['nama', 'nik', 'npm', 'angkatan', 'validasi', 'id_user', 'prodi_id', 'jurusan_id', 'fakultas_id', 'kurikulum', 'status', 'jalur_pendaftaran'];
 
     // Dates
     // protected $useTimestamps = true;

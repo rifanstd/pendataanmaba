@@ -6,6 +6,7 @@ class Page extends BaseController
 {
     public function index()
     {
-        return view('page/dashboard');
+        $data = ['title' => 'Welcome'];
+        return view('page/welcome', $data);
     }
 }

@@ -8,7 +8,7 @@ class ProdiModel extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'prodi';
-    protected $primaryKey       = 'id';
+    protected $primaryKey       = 'id_prodi';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
@@ -24,9 +24,19 @@ class ProdiModel extends Model
     public function getByID($id)
     {
         $dataProdi = $this->db->table($this->table)
-            ->where('id', $id)
+            ->where('id_prodi', $id)
             ->get()
             ->getResultArray();
+
+        return $dataProdi;
+    }
+
+    public function getProdi()
+    {
+        $dataProdi = $this->db->table($this->table)
+            ->join('jurusan', 'jurusan.id_jurusan = prodi.jurusan_id')
+            ->join('fakultas', 'fakultas.id_fakultas = prodi.fakultas_id')
+            ->get()->getResultArray();
 
         return $dataProdi;
     }

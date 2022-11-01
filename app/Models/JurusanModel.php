@@ -8,7 +8,7 @@ class JurusanModel extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'jurusan';
-    protected $primaryKey       = 'id';
+    protected $primaryKey       = 'id_jurusan';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
@@ -24,7 +24,25 @@ class JurusanModel extends Model
     public function getByID($id)
     {
         $dataJurusan = $this->db->table($this->table)
-            ->where('id', $id)
+            ->where('id_jurusan', $id)
+            ->get()
+            ->getResultArray();
+
+        return $dataJurusan;
+    }
+
+    public function getJurusan()
+    {
+        $dataJurusan = $this->db->table($this->table)
+            ->join('fakultas', 'fakultas.id_fakultas = jurusan.fakultas_id')
+            ->get()->getResultArray();
+        return $dataJurusan;
+    }
+
+    public function getByProdi($id)
+    {
+        $dataJurusan = $this->db->table($this->table)
+            ->where('id_jurusan', $id)
             ->get()
             ->getResultArray();
 
