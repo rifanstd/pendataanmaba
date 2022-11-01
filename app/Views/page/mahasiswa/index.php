@@ -1,5 +1,5 @@
 <?= $this->extend('page/dashboard') ?>
 
 <?= $this->section('content') ?>
-<?= dd($mahasiswa); ?>
+Data Mahasiswa
 <?= $this->endSection() ?>

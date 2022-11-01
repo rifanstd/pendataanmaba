@@ -19,7 +19,14 @@ class Mahasiswa extends BaseController
         $this->fakultasModel = new FakultasModel();
     }
 
-    public function data_anda()
+    public function index()
+    {
+        $data = ['title' => 'Data Mahasiswa'];
+
+        return view('page/mahasiswa/index', $data);
+    }
+
+    public function informasi_data_anda()
     {
         $mahasiswa = $this->mahasiswaModel->getByUserID();
         $prodi = $this->prodiModel->getByID($mahasiswa['prodi_id']);
@@ -34,8 +41,42 @@ class Mahasiswa extends BaseController
             'fakultas' => $fakultas,
         ];
 
-        // dd($data);
+        return view('page/mahasiswa/informasi_data_anda', $data);
+    }
 
-        return view('page/mahasiswa/data_anda', $data);
+    public function biodata()
+    {
+        $mahasiswa = $this->mahasiswaModel->getByUserID();
+        $prodi = $this->prodiModel->getByID($mahasiswa['prodi_id']);
+        $jurusan = $this->jurusanModel->getByID($mahasiswa['jurusan_id']);
+        $fakultas = $this->fakultasModel->getByID($mahasiswa['fakultas_id']);
+
+        $data = [
+            'title' => 'Data Anda | Mahasiswa',
+            'mahasiswa' => $mahasiswa,
+            'prodi' => $prodi,
+            'jurusan' => $jurusan,
+            'fakultas' => $fakultas,
+        ];
+
+        return view('page/mahasiswa/biodata', $data);
+    }
+
+    public function edit($id)
+    {
+        $mahasiswa = $this->mahasiswaModel->getByUserID();
+        $prodi = $this->prodiModel->getByID($mahasiswa['prodi_id']);
+        $jurusan = $this->jurusanModel->getByID($mahasiswa['jurusan_id']);
+        $fakultas = $this->fakultasModel->getByID($mahasiswa['fakultas_id']);
+
+        $data = [
+            'title' => 'Data Anda | Mahasiswa',
+            'mahasiswa' => $mahasiswa,
+            'prodi' => $prodi,
+            'jurusan' => $jurusan,
+            'fakultas' => $fakultas,
+        ];
+
+        return view('page/mahasiswa/edit', $data);
     }
 }
