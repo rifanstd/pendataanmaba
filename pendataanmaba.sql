@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 31, 2022 at 06:22 PM
+-- Generation Time: Nov 01, 2022 at 07:15 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.0.23
 
@@ -125,7 +125,9 @@ CREATE TABLE `auth_logins` (
 --
 
 INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `success`) VALUES
-(1, '::1', 'yogi@gmail.com', 2, '2022-10-31 12:21:51', 1);
+(1, '::1', 'yogi@gmail.com', 2, '2022-10-31 12:21:51', 1),
+(2, '::1', 'yogi@gmail.com', 2, '2022-11-01 06:54:55', 1),
+(3, '::1', 'rfan2442@gmail.com', 1, '2022-11-01 12:21:37', 1);
 
 -- --------------------------------------------------------
 
@@ -186,9 +188,16 @@ CREATE TABLE `auth_users_permissions` (
 --
 
 CREATE TABLE `fakultas` (
-  `id` int(11) UNSIGNED NOT NULL,
+  `id_fakultas` int(11) UNSIGNED NOT NULL,
   `nama_fakultas` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `fakultas`
+--
+
+INSERT INTO `fakultas` (`id_fakultas`, `nama_fakultas`) VALUES
+(5, 'FMIPA');
 
 -- --------------------------------------------------------
 
@@ -197,10 +206,17 @@ CREATE TABLE `fakultas` (
 --
 
 CREATE TABLE `jurusan` (
-  `id` int(10) UNSIGNED NOT NULL,
+  `id_jurusan` int(11) UNSIGNED NOT NULL,
   `nama_jurusan` varchar(255) NOT NULL,
   `fakultas_id` int(11) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `jurusan`
+--
+
+INSERT INTO `jurusan` (`id_jurusan`, `nama_jurusan`, `fakultas_id`) VALUES
+(8, 'Ilmu Komputer', 5);
 
 -- --------------------------------------------------------
 
@@ -214,6 +230,9 @@ CREATE TABLE `mahasiswa` (
   `nik` bigint(20) UNSIGNED DEFAULT NULL,
   `npm` int(10) UNSIGNED DEFAULT NULL,
   `angkatan` int(10) UNSIGNED DEFAULT NULL,
+  `kurikulum` int(10) DEFAULT NULL,
+  `status` varchar(100) DEFAULT NULL,
+  `jalur_pendaftaran` varchar(100) DEFAULT NULL,
   `validasi` enum('Valid','Belum') NOT NULL,
   `id_user` int(10) UNSIGNED NOT NULL,
   `prodi_id` int(10) UNSIGNED DEFAULT NULL,
@@ -225,8 +244,8 @@ CREATE TABLE `mahasiswa` (
 -- Dumping data for table `mahasiswa`
 --
 
-INSERT INTO `mahasiswa` (`id`, `nama`, `nik`, `npm`, `angkatan`, `validasi`, `id_user`, `prodi_id`, `jurusan_id`, `fakultas_id`) VALUES
-(1, 'Yogi Andaru', NULL, NULL, 2022, 'Belum', 2, NULL, NULL, NULL);
+INSERT INTO `mahasiswa` (`id`, `nama`, `nik`, `npm`, `angkatan`, `kurikulum`, `status`, `jalur_pendaftaran`, `validasi`, `id_user`, `prodi_id`, `jurusan_id`, `fakultas_id`) VALUES
+(1, 'Yogi Andaru', NULL, NULL, 2022, 0, '', '', 'Belum', 2, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -251,11 +270,18 @@ CREATE TABLE `migrations` (
 --
 
 CREATE TABLE `prodi` (
-  `id` int(10) UNSIGNED NOT NULL,
+  `id_prodi` int(10) UNSIGNED NOT NULL,
   `nama_prodi` varchar(255) NOT NULL,
   `jurusan_id` int(11) UNSIGNED NOT NULL,
   `fakultas_id` int(11) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `prodi`
+--
+
+INSERT INTO `prodi` (`id_prodi`, `nama_prodi`, `jurusan_id`, `fakultas_id`) VALUES
+(10, 'D3 Ilmu Komputer', 8, 5);
 
 -- --------------------------------------------------------
 
@@ -366,13 +392,13 @@ ALTER TABLE `auth_users_permissions`
 -- Indexes for table `fakultas`
 --
 ALTER TABLE `fakultas`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id_fakultas`);
 
 --
 -- Indexes for table `jurusan`
 --
 ALTER TABLE `jurusan`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`id_jurusan`),
   ADD KEY `fakultas_id` (`fakultas_id`);
 
 --
@@ -397,7 +423,7 @@ ALTER TABLE `migrations`
 -- Indexes for table `prodi`
 --
 ALTER TABLE `prodi`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`id_prodi`),
   ADD KEY `fakultas_id` (`fakultas_id`),
   ADD KEY `jurusan_id` (`jurusan_id`);
 
@@ -435,7 +461,7 @@ ALTER TABLE `auth_groups`
 -- AUTO_INCREMENT for table `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `auth_permissions`
@@ -459,13 +485,13 @@ ALTER TABLE `auth_tokens`
 -- AUTO_INCREMENT for table `fakultas`
 --
 ALTER TABLE `fakultas`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_fakultas` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `jurusan`
 --
 ALTER TABLE `jurusan`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_jurusan` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `mahasiswa`
@@ -483,7 +509,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `prodi`
 --
 ALTER TABLE `prodi`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_prodi` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -532,23 +558,23 @@ ALTER TABLE `auth_users_permissions`
 -- Constraints for table `jurusan`
 --
 ALTER TABLE `jurusan`
-  ADD CONSTRAINT `jurusan_ibfk_1` FOREIGN KEY (`fakultas_id`) REFERENCES `fakultas` (`id`);
+  ADD CONSTRAINT `jurusan_ibfk_1` FOREIGN KEY (`fakultas_id`) REFERENCES `fakultas` (`id_fakultas`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
   ADD CONSTRAINT `id_user` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `mahasiswa_ibfk_2` FOREIGN KEY (`fakultas_id`) REFERENCES `fakultas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `mahasiswa_ibfk_3` FOREIGN KEY (`jurusan_id`) REFERENCES `jurusan` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `mahasiswa_ibfk_4` FOREIGN KEY (`prodi_id`) REFERENCES `prodi` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `mahasiswa_ibfk_2` FOREIGN KEY (`fakultas_id`) REFERENCES `fakultas` (`id_fakultas`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `mahasiswa_ibfk_3` FOREIGN KEY (`jurusan_id`) REFERENCES `jurusan` (`id_jurusan`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `mahasiswa_ibfk_4` FOREIGN KEY (`prodi_id`) REFERENCES `prodi` (`id_prodi`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `prodi`
 --
 ALTER TABLE `prodi`
-  ADD CONSTRAINT `prodi_ibfk_1` FOREIGN KEY (`fakultas_id`) REFERENCES `fakultas` (`id`),
-  ADD CONSTRAINT `prodi_ibfk_2` FOREIGN KEY (`jurusan_id`) REFERENCES `jurusan` (`id`);
+  ADD CONSTRAINT `fakultas_id` FOREIGN KEY (`fakultas_id`) REFERENCES `fakultas` (`id_fakultas`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `jurusan_id` FOREIGN KEY (`jurusan_id`) REFERENCES `jurusan` (`id_jurusan`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
