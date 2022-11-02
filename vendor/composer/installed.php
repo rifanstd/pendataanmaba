@@ -26,9 +26,9 @@
             ),
         ),
         'codeigniter4/framework' => array(
-            'pretty_version' => 'v4.2.7',
-            'version' => '4.2.7.0',
-            'reference' => '011ce3bbda6f85930075a9b8fecbee01c4b23ab9',
+            'pretty_version' => 'v4.2.9',
+            'version' => '4.2.9.0',
+            'reference' => '34373dfc580b4a95375f911853060b5a0eea169a',
             'type' => 'project',
             'install_path' => __DIR__ . '/../codeigniter4/framework',
             'aliases' => array(),

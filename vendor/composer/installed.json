@@ -2,17 +2,17 @@
     "packages": [
         {
             "name": "codeigniter4/framework",
-            "version": "v4.2.7",
-            "version_normalized": "4.2.7.0",
+            "version": "v4.2.9",
+            "version_normalized": "4.2.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/codeigniter4/framework.git",
-                "reference": "011ce3bbda6f85930075a9b8fecbee01c4b23ab9"
+                "reference": "34373dfc580b4a95375f911853060b5a0eea169a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeigniter4/framework/zipball/011ce3bbda6f85930075a9b8fecbee01c4b23ab9",
-                "reference": "011ce3bbda6f85930075a9b8fecbee01c4b23ab9",
+                "url": "https://api.github.com/repos/codeigniter4/framework/zipball/34373dfc580b4a95375f911853060b5a0eea169a",
+                "reference": "34373dfc580b4a95375f911853060b5a0eea169a",
                 "shasum": ""
             },
             "require": {
@@ -28,15 +28,19 @@
             "require-dev": {
                 "codeigniter/coding-standard": "^1.5",
                 "fakerphp/faker": "^1.9",
-                "friendsofphp/php-cs-fixer": "~3.11.0",
+                "friendsofphp/php-cs-fixer": "~3.12.0",
                 "mikey179/vfsstream": "^1.6",
                 "nexusphp/cs-config": "^3.6",
                 "phpunit/phpunit": "^9.1",
                 "predis/predis": "^1.1 || ^2.0"
             },
             "suggest": {
+                "ext-dom": "If you use TestResponse",
+                "ext-exif": "If you run Image class tests",
                 "ext-fileinfo": "Improves mime type detection for files",
+                "ext-gd": "If you use Image class GDHandler",
                 "ext-imagick": "If you use Image class ImageMagickHandler",
+                "ext-libxml": "If you use TestResponse",
                 "ext-memcache": "If you use Cache class MemcachedHandler with Memcache",
                 "ext-memcached": "If you use Cache class MemcachedHandler with Memcached",
                 "ext-mysqli": "If you use MySQL",
@@ -48,7 +52,7 @@
                 "ext-sqlite3": "If you use SQLite3",
                 "ext-sqlsrv": "If you use SQL Server"
             },
-            "time": "2022-10-06T13:46:23+00:00",
+            "time": "2022-10-31T00:46:08+00:00",
             "type": "project",
             "installation-source": "dist",
             "autoload": {
