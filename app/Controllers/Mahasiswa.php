@@ -34,7 +34,7 @@ class Mahasiswa extends BaseController
         $fakultas = $this->fakultasModel->getByID($mahasiswa['fakultas_id']);
 
         $data = [
-            'title' => 'Data Anda | Mahasiswa',
+            'title' => 'Informasi Data Anda',
             'mahasiswa' => $mahasiswa,
             'prodi' => $prodi,
             'jurusan' => $jurusan,
@@ -52,7 +52,7 @@ class Mahasiswa extends BaseController
         $fakultas = $this->fakultasModel->getByID($mahasiswa['fakultas_id']);
 
         $data = [
-            'title' => 'Data Anda | Mahasiswa',
+            'title' => 'Biodata Anda',
             'mahasiswa' => $mahasiswa,
             'prodi' => $prodi,
             'jurusan' => $jurusan,
@@ -70,7 +70,7 @@ class Mahasiswa extends BaseController
         $fakultas = $this->fakultasModel->getByID($mahasiswa['fakultas_id']);
 
         $data = [
-            'title' => 'Data Anda | Mahasiswa',
+            'title' => 'Edit Data Mahasiswa',
             'mahasiswa' => $mahasiswa,
             'prodi' => $prodi,
             'jurusan' => $jurusan,

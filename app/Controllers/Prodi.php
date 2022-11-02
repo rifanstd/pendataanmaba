@@ -20,7 +20,7 @@ class Prodi extends BaseController
     public function index()
     {
         $data = [
-            'title' => 'Data Jurusan',
+            'title' => 'Data Program Studi',
             'prodi' => $this->prodiModel->getProdi(),
         ];
 
