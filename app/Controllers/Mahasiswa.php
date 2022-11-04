@@ -96,4 +96,39 @@ class Mahasiswa extends BaseController
 
         return view('page/mahasiswa/validasi', $data);
     }
+
+    public function save_validasi($id)
+    {
+        // $data = [
+        //     'nama' => $this->request->getVar('nama'),
+        //     'nik' => $this->request->getVar('nik'),
+        //     'npm' => $this->request->getVar('npm'),
+        //     'angkatan' => $this->request->getVar('angkatan'),
+        //     'kurikulum' => $this->request->getVar('kurikulum'),
+        //     'status' => $this->request->getVar('status'),
+        //     'jalur_pendaftaran' => $this->request->getVar('jalur_pendaftaran'),
+        //     'validasi' => 'Valid',
+        //     'prodi_id' => $this->request->getVar('prodi_id'),
+        //     'jurusan_id' => $this->request->getVar('jurusan_id'),
+        //     'fakultas_id' => $this->request->getVar('fakultas_id'),
+        // ];
+
+        // dd($data);
+
+        $this->mahasiswaModel->update($id, [
+            'nama' => $this->request->getVar('nama'),
+            'nik' => $this->request->getVar('nik'),
+            'npm' => $this->request->getVar('npm'),
+            'angkatan' => $this->request->getVar('angkatan'),
+            'kurikulum' => $this->request->getVar('kurikulum'),
+            'status' => $this->request->getVar('status'),
+            'jalur_pendaftaran' => $this->request->getVar('jalur_pendaftaran'),
+            'validasi' => 'Valid',
+            'prodi_id' => $this->request->getVar('prodi_id'),
+            'jurusan_id' => $this->request->getVar('jurusan_id'),
+            'fakultas_id' => $this->request->getVar('fakultas_id'),
+        ]);
+
+        return redirect()->to('/validasi/' . $id);
+    }
 }
