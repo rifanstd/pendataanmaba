@@ -12,5 +12,5 @@
 <p>Program Studi : <?= (count($prodi) !== 0 ? $prodi[0]['nama_prodi'] : '') ?></p>
 <p>Jurusan : <?= (count($jurusan) !== 0 ? $jurusan[0]['nama_jurusan'] : '') ?></p>
 <p>Fakultas : <?= (count($fakultas) !== 0 ? $fakultas[0]['nama_fakultas'] : '') ?></p>
-<a href="/mahasiswa/biodata/<?= $mahasiswa['id'] ?>">Lengkapi Biodata</a>
+<a href="/mahasiswa/edit_biodata/<?= $mahasiswa['id'] ?>" class="btn btn-success">Lengkapi Biodata</a>
 <?= $this->endSection() ?>

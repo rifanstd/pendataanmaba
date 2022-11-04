@@ -47,25 +47,7 @@ class Mahasiswa extends BaseController
         return view('page/mahasiswa/informasi_data_anda', $data);
     }
 
-    public function biodata()
-    {
-        $mahasiswa = $this->mahasiswaModel->getByUserID();
-        $prodi = $this->prodiModel->getByID($mahasiswa['prodi_id']);
-        $jurusan = $this->jurusanModel->getByID($mahasiswa['jurusan_id']);
-        $fakultas = $this->fakultasModel->getByID($mahasiswa['fakultas_id']);
-
-        $data = [
-            'title' => 'Biodata Anda',
-            'mahasiswa' => $mahasiswa,
-            'prodi' => $prodi,
-            'jurusan' => $jurusan,
-            'fakultas' => $fakultas,
-        ];
-
-        return view('page/mahasiswa/biodata', $data);
-    }
-
-    public function edit($id)
+    public function edit_biodata($id)
     {
         $mahasiswa = $this->mahasiswaModel->getByUserID();
         $prodi = $this->prodiModel->getByID($mahasiswa['prodi_id']);
@@ -76,11 +58,37 @@ class Mahasiswa extends BaseController
             'title' => 'Edit Data Mahasiswa',
             'mahasiswa' => $mahasiswa,
             'prodi' => $prodi,
+            'all_prodi' => $this->prodiModel->findAll(),
             'jurusan' => $jurusan,
+            'all_jurusan' => $this->jurusanModel->findAll(),
             'fakultas' => $fakultas,
+            'all_fakultas' => $this->fakultasModel->findAll(),
         ];
 
-        return view('page/mahasiswa/edit', $data);
+        return view('page/mahasiswa/edit_biodata', $data);
+    }
+
+    public function update($id)
+    {
+        $this->mahasiswaModel->update($id, [
+            'nama' => $this->request->getVar('nama'),
+            'nik' => $this->request->getVar('nik'),
+            'prodi' => $this->request->getVar('prodi_id'),
+            'jurusan' => $this->request->getVar('jurusan_id'),
+            'fakultas' => $this->request->getVar('fakultas_id'),
+        ]);
+
+        return redirect()->to('/mahasiswa/informasi_data_anda');
+    }
+
+    public function daftar_mahasiswa()
+    {
+        $data = [
+            'title' => 'Daftar Mahasiswa',
+            'mahasiswa' => $this->mahasiswaModel->getAllMahasiswa(),
+        ];
+
+        return view('page/mahasiswa/daftar_mahasiswa', $data);
     }
 
     // Untuk superadmin dan admin
@@ -99,22 +107,6 @@ class Mahasiswa extends BaseController
 
     public function save_validasi($id)
     {
-        // $data = [
-        //     'nama' => $this->request->getVar('nama'),
-        //     'nik' => $this->request->getVar('nik'),
-        //     'npm' => $this->request->getVar('npm'),
-        //     'angkatan' => $this->request->getVar('angkatan'),
-        //     'kurikulum' => $this->request->getVar('kurikulum'),
-        //     'status' => $this->request->getVar('status'),
-        //     'jalur_pendaftaran' => $this->request->getVar('jalur_pendaftaran'),
-        //     'validasi' => 'Valid',
-        //     'prodi_id' => $this->request->getVar('prodi_id'),
-        //     'jurusan_id' => $this->request->getVar('jurusan_id'),
-        //     'fakultas_id' => $this->request->getVar('fakultas_id'),
-        // ];
-
-        // dd($data);
-
         $this->mahasiswaModel->update($id, [
             'nama' => $this->request->getVar('nama'),
             'nik' => $this->request->getVar('nik'),
