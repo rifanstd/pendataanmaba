@@ -35,11 +35,12 @@
                             <td scope="col"><?= $mhs['nama_prodi'] ?></td>
                             <td scope="col"><?= $mhs['nama_jurusan'] ?></td>
                             <td scope="col"><?= $mhs['nama_fakultas'] ?></td>
-                            <td scope="col">
+                            <td scope="col" class="p-3">
                                 <?php if ($mhs['validasi'] === 'Belum') : ?>
                                     <a href="/validasi/<?= $mhs['id'] ?>" class="btn btn-warning">Validasi</a>
                                 <?php else : ?>
-                                    <p class="btn btn-success">Sudah Tervalidasi</p>
+                                    <span class="btn btn-success mb-1">Sudah Tervalidasi</span>
+                                    <a href="/validasi/<?= $mhs['id'] ?>" class="btn btn-warning">Ubah</a>
                                 <?php endif; ?>
                             </td>
                         </tr>
