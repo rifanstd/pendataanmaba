@@ -29,4 +29,28 @@ class MahasiswaModel extends Model
             ->getResultArray()[0];
         return $mahasiswa;
     }
+
+    public function getByID($id)
+    {
+        $mahasiswa = $this->db->table($this->table)
+            ->where('id', $id)
+            ->join('prodi', 'prodi.id_prodi = mahasiswa.prodi_id')
+            ->join('jurusan', 'jurusan.id_jurusan = mahasiswa.jurusan_id')
+            ->join('fakultas', 'fakultas.id_fakultas = mahasiswa.fakultas_id')
+            ->get()
+            ->getResultArray();
+        return $mahasiswa;
+    }
+
+    public function getAllMahasiswa()
+    {
+        $mahasiswa = $this->db->table($this->table)
+            ->join('prodi', 'prodi.id_prodi = mahasiswa.prodi_id')
+            ->join('jurusan', 'jurusan.id_jurusan = mahasiswa.jurusan_id')
+            ->join('fakultas', 'fakultas.id_fakultas = mahasiswa.fakultas_id')
+            ->get()
+            ->getResultArray();
+
+        return $mahasiswa;
+    }
 }

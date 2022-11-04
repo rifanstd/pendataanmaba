@@ -8,10 +8,10 @@
         <div class="col-6">
             <div class="card">
                 <div class="card-header">
-                    <h4>Tabel Jurusan</h4>
+                    <h4>Tabel Program Studi</h4>
                 </div>
                 <div class="col-2">
-                    <a href="/prodi/create" class="btn btn-outline-primary"><i class="bi bi-plus-lg"></i> Tambah Data Jurusan</a>
+                    <a href="/prodi/create" class="btn btn-outline-primary"><i class="bi bi-plus-lg"></i> Tambah Data Program Studi</a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
