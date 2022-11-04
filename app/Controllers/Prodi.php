@@ -30,7 +30,7 @@ class Prodi extends BaseController
     public function create()
     {
         $data = [
-            'title' => 'Tambah Data Jurusan',
+            'title' => 'Tambah Data Program Studi',
             'jurusan' => $this->jurusanModel->findAll(),
             'fakultas' => $this->fakultasModel->findAll()
         ];

@@ -21,7 +21,10 @@ class Mahasiswa extends BaseController
 
     public function index()
     {
-        $data = ['title' => 'Data Mahasiswa'];
+        $data = [
+            'title' => 'Data Mahasiswa',
+            'mahasiswa' => $this->mahasiswaModel->getAllMahasiswa(),
+        ];
 
         return view('page/mahasiswa/index', $data);
     }
@@ -78,5 +81,19 @@ class Mahasiswa extends BaseController
         ];
 
         return view('page/mahasiswa/edit', $data);
+    }
+
+    // Untuk superadmin dan admin
+    public function validasi($id)
+    {
+        $data = [
+            'title' => 'Validasi Mahasiswa',
+            'mahasiswa' => $this->mahasiswaModel->getByID($id),
+            'prodi' => $this->prodiModel->findAll(),
+            'jurusan' => $this->jurusanModel->findAll(),
+            'fakultas' => $this->fakultasModel->findAll()
+        ];
+
+        return view('page/mahasiswa/validasi', $data);
     }
 }
