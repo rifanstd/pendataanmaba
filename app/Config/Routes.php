@@ -40,8 +40,9 @@ $routes->get('/', 'Page::index', ['filter' => 'role:superadmin, admin, mahasiswa
 
 // Untuk mahasiswa
 $routes->get('/mahasiswa/informasi_data_anda', 'Mahasiswa::informasi_data_anda', ['filter' => 'role:mahasiswa']);
-$routes->get('/mahasiswa/biodata', 'Mahasiswa::biodata', ['filter' => 'role:mahasiswa']);
-$routes->get('/mahasiswa/edit/(:num)', 'Mahasiswa::edit/$1', ['filter' => 'role:mahasiswa']);
+$routes->get('/mahasiswa/edit_biodata/(:num)', 'Mahasiswa::edit_biodata/$1', ['filter' => 'role:mahasiswa']);
+$routes->post('/mahasiswa/update/(:num)', 'Mahasiswa::update/$1', ['filter' => 'role:mahasiswa']);
+$routes->get('/mahasiswa/daftar_mahasiswa', 'Mahasiswa::daftar_mahasiswa', ['filter' => 'role:mahasiswa']);
 
 // Untuk Super Admin dan Admin
 $routes->get('/data_mahasiswa', 'Mahasiswa::index', ['filter' => 'role:superadmin, admin']);
