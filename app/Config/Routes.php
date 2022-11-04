@@ -46,6 +46,7 @@ $routes->get('/mahasiswa/edit/(:num)', 'Mahasiswa::edit/$1', ['filter' => 'role:
 // Untuk Super Admin dan Admin
 $routes->get('/data_mahasiswa', 'Mahasiswa::index', ['filter' => 'role:superadmin, admin']);
 $routes->get('/validasi/(:num)', 'Mahasiswa::validasi/$1', ['filter' => 'role:superadmin, admin']);
+$routes->post('/validasi/save_validasi/(:num)', 'Mahasiswa::save_validasi/$1', ['filter' => 'role:superadmin, admin']);
 
 $routes->get('/fakultas/index', 'Fakultas::index', ['filter' => 'role:superadmin, admin']);
 $routes->get('/fakultas/create', 'Fakultas::create', ['filter' => 'role:superadmin, admin']);
