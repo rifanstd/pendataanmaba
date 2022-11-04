@@ -49,7 +49,7 @@
                 <ul class="navbar-nav navbar-right">
                     <li class=""><a href="#" class="nav-link nav-link-lg nav-link-user">
                             <img alt="image" src="/stisla/dist/assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
-                            <div class="d-sm-none d-lg-inline-block">Hi, Ujang Maman</div>
+                            <div class="d-sm-none d-lg-inline-block">Hi, <?= user()->username; ?></div>
                         </a>
                     </li>
                 </ul>
@@ -58,6 +58,8 @@
                 <aside id="sidebar-wrapper">
                     <div class="sidebar-brand">
                         <a href="/"><?php if (in_groups('mahasiswa')) : ?>MAHASISWA<?php endif; ?><?php if (in_groups('superadmin')) : ?>SUPERADMIN<?php endif; ?><?php if (in_groups('admin')) : ?>ADMIN<?php endif; ?></a>
+                        ||
+                        <a href="/"><?= user()->username; ?></a>
                     </div>
                     <div class="sidebar-brand sidebar-brand-sm">
                         <a href="/"><?php if (in_groups('mahasiswa')) : ?>M<?php endif; ?><?php if (in_groups('superadmin')) : ?>S<?php endif; ?><?php if (in_groups('admin')) : ?>A<?php endif; ?></a>
