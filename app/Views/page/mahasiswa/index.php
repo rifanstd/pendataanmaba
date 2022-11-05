@@ -2,6 +2,11 @@
 
 <?= $this->section('content') ?>
 <div class="card">
+    <?php if (session()->getFlashdata('pesan')) : ?>
+        <div class="alert alert-success" role="alert">
+            <?= session()->getFlashdata('pesan'); ?>
+        </div>
+    <?php endif; ?>
     <div class="card-body">
         <div class="table-responsive">
             <table class="table">

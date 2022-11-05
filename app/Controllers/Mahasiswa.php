@@ -99,7 +99,8 @@ class Mahasiswa extends BaseController
             'mahasiswa' => $this->mahasiswaModel->getByID($id),
             'prodi' => $this->prodiModel->findAll(),
             'jurusan' => $this->jurusanModel->findAll(),
-            'fakultas' => $this->fakultasModel->findAll()
+            'fakultas' => $this->fakultasModel->findAll(),
+            'validation' => \Config\Services::validation()
         ];
 
         return view('page/mahasiswa/validasi', $data);
@@ -107,6 +108,22 @@ class Mahasiswa extends BaseController
 
     public function save_validasi($id)
     {
+        // cek nama
+        $mahasiswaLama = $this->mahasiswaModel->getByID($id);
+
+        if ($mahasiswaLama[0]['npm'] == $this->request->getVar('npm')) {
+            $rule_npm = 'required';
+        } else {
+            $rule_npm = 'required|is_unique[mahasiswa.npm]';
+        }
+
+        // validasi input
+        if (!$this->validate([
+            'npm' => $rule_npm,
+        ])) {
+            return redirect()->to('/validasi/' . $id)->withInput();
+        }
+
         $this->mahasiswaModel->update($id, [
             'nama' => $this->request->getVar('nama'),
             'nik' => $this->request->getVar('nik'),
@@ -121,6 +138,8 @@ class Mahasiswa extends BaseController
             'fakultas_id' => $this->request->getVar('fakultas_id'),
         ]);
 
-        return redirect()->to('/validasi/' . $id);
+        session()->setFlashdata('pesan', 'Data berhasil divalidasi');
+
+        return redirect()->to('/data_mahasiswa');
     }
 }
