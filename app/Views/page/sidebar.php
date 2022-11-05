@@ -77,7 +77,7 @@
                             <li class="<?= ($title == "Data Program Studi") ? 'active' : '' ?>"><a class="nav-link" href="/prodi/index"><i class="far fa-square"></i> <span>Data Program Studi</span></a></li>
                         <?php endif; ?>
                         <?php if (in_groups('superadmin')) : ?>
-                            <li class="<?= ($title == "Admin") ? 'active' : '' ?>"><a class="nav-link" href="Belum ada"><i class="far fa-square"></i> <span>Admin</span></a></li>
+                            <li class="<?= ($title == "Admin") ? 'active' : '' ?>"><a class="nav-link" href="/admin/data_admin"><i class="far fa-square"></i> <span>Data Admin</span></a></li>
                         <?php endif; ?>
                         <li><a class="nav-link" href="/logout"><i class="far fa-square"></i> <span>Logout</span></a></li>
                     </ul>

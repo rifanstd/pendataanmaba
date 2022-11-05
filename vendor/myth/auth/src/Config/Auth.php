@@ -53,6 +53,8 @@ class Auth extends BaseConfig
         'resend-activate-account' => 'resend-activate-account',
         'forgot'                  => 'forgot',
         'reset-password'          => 'reset-password',
+        'admin/create_admin'      => 'admin/create_admin',
+        'admin/save_admin'        => 'admin/save_admin',
     ];
 
     /**
@@ -80,6 +82,7 @@ class Auth extends BaseConfig
         'reset'           => 'App\Views\auth\reset',
         'emailForgot'     => 'Myth\Auth\Views\emails\forgot',
         'emailActivation' => 'Myth\Auth\Views\emails\activation',
+        'create_admin'    => 'App\Views\page\admin\create',
     ];
 
     /**

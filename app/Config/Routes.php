@@ -70,6 +70,10 @@ $routes->get('/prodi/edit/(:num)/(:num)/(:num)', 'Prodi::edit/$1/$2/$3', ['filte
 $routes->post('/prodi/update/(:num)', 'Prodi::update/$1', ['filter' => 'role:superadmin, admin']);
 $routes->delete('/prodi/delete/(:num)', 'Prodi::delete/$1', ['filter' => 'role:superadmin, admin']);
 
+// Untuk superadmin
+$routes->get('/admin/data_admin', 'Admin::index', ['filter' => 'role:superadmin']);
+
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
