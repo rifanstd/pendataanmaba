@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 01, 2022 at 07:15 PM
+-- Generation Time: Nov 05, 2022 at 09:50 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.0.23
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admin` (
-  `id` int(10) UNSIGNED NOT NULL,
+  `id_admin` int(10) UNSIGNED NOT NULL,
   `nama` varchar(255) NOT NULL,
   `id_user` int(11) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -37,8 +37,9 @@ CREATE TABLE `admin` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id`, `nama`, `id_user`) VALUES
-(1, 'Rifan Setiadi', 1);
+INSERT INTO `admin` (`id_admin`, `nama`, `id_user`) VALUES
+(1, 'Rifan Setiadi', 1),
+(4, 'Ayumna', 5);
 
 -- --------------------------------------------------------
 
@@ -103,6 +104,7 @@ CREATE TABLE `auth_groups_users` (
 
 INSERT INTO `auth_groups_users` (`group_id`, `user_id`) VALUES
 (1, 1),
+(2, 5),
 (3, 2);
 
 -- --------------------------------------------------------
@@ -127,7 +129,30 @@ CREATE TABLE `auth_logins` (
 INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `success`) VALUES
 (1, '::1', 'yogi@gmail.com', 2, '2022-10-31 12:21:51', 1),
 (2, '::1', 'yogi@gmail.com', 2, '2022-11-01 06:54:55', 1),
-(3, '::1', 'rfan2442@gmail.com', 1, '2022-11-01 12:21:37', 1);
+(3, '::1', 'rfan2442@gmail.com', 1, '2022-11-01 12:21:37', 1),
+(4, '::1', 'rfan2442@gmail.com', 1, '2022-11-02 19:36:58', 1),
+(5, '::1', 'rfan2442@gmail.com', 1, '2022-11-02 19:41:49', 1),
+(6, '::1', 'rfan2442@gmail.com', 1, '2022-11-04 01:52:15', 1),
+(7, '::1', 'rfan2442@gmail.com', 1, '2022-11-04 09:06:06', 1),
+(8, '::1', 'rfanstd24@gmail.com', NULL, '2022-11-04 09:31:30', 0),
+(9, '::1', 'rfan2442@gmail.com', NULL, '2022-11-04 09:31:38', 0),
+(10, '::1', 'rfan2442@gmail.com', NULL, '2022-11-04 09:31:48', 0),
+(11, '::1', 'rifanstd', NULL, '2022-11-04 09:32:05', 0),
+(12, '::1', 'rfan2442@gmail.com', NULL, '2022-11-04 09:33:54', 0),
+(13, '::1', 'rfan2442@gmail.com', 1, '2022-11-04 09:34:05', 1),
+(14, '::1', 'rfan2442@gmail.com', 1, '2022-11-04 10:17:36', 1),
+(15, '::1', 'yogi@gmail.com', 2, '2022-11-04 10:18:55', 1),
+(16, '::1', 'yogi@gmail.com', 2, '2022-11-04 11:28:54', 1),
+(17, '::1', 'yogi@gmail.com', 2, '2022-11-04 12:03:28', 1),
+(18, '::1', 'rfan2442@gmail.com', 1, '2022-11-04 13:04:46', 1),
+(19, '::1', 'rfan2442@gmail.com', 1, '2022-11-04 13:12:53', 1),
+(20, '::1', 'rfan2442@gmail.com', 1, '2022-11-04 22:08:43', 1),
+(21, '::1', 'yogi@gmail.com', 2, '2022-11-04 23:24:43', 1),
+(22, '::1', 'rfan2442@gmail.com', 1, '2022-11-05 02:34:41', 1),
+(23, '::1', 'rfan2442@gmail.com', 1, '2022-11-05 03:19:40', 1),
+(24, '::1', 'ayumna', 4, '2022-11-05 03:43:52', 0),
+(25, '::1', 'rfan2442@gmail.com', 1, '2022-11-05 03:46:20', 1),
+(26, '::1', 'ayumna@gmail.com', 5, '2022-11-05 03:48:33', 1);
 
 -- --------------------------------------------------------
 
@@ -197,7 +222,11 @@ CREATE TABLE `fakultas` (
 --
 
 INSERT INTO `fakultas` (`id_fakultas`, `nama_fakultas`) VALUES
-(5, 'FMIPA');
+(5, 'FMIPA'),
+(6, 'FISIP'),
+(10, 'FEB'),
+(11, 'FKIP'),
+(12, 'FT');
 
 -- --------------------------------------------------------
 
@@ -228,7 +257,7 @@ CREATE TABLE `mahasiswa` (
   `id` int(10) UNSIGNED NOT NULL,
   `nama` varchar(255) NOT NULL,
   `nik` bigint(20) UNSIGNED DEFAULT NULL,
-  `npm` int(10) UNSIGNED DEFAULT NULL,
+  `npm` bigint(20) UNSIGNED DEFAULT NULL,
   `angkatan` int(10) UNSIGNED DEFAULT NULL,
   `kurikulum` int(10) DEFAULT NULL,
   `status` varchar(100) DEFAULT NULL,
@@ -245,7 +274,7 @@ CREATE TABLE `mahasiswa` (
 --
 
 INSERT INTO `mahasiswa` (`id`, `nama`, `nik`, `npm`, `angkatan`, `kurikulum`, `status`, `jalur_pendaftaran`, `validasi`, `id_user`, `prodi_id`, `jurusan_id`, `fakultas_id`) VALUES
-(1, 'Yogi Andaru', NULL, NULL, 2022, 0, '', '', 'Belum', 2, NULL, NULL, NULL);
+(1, 'Yogi Andaru', 3603010112129990, 2017051001, 2022, 2020, 'Aktif', 'SBMPTN', 'Belum', 2, 10, 8, 5);
 
 -- --------------------------------------------------------
 
@@ -281,7 +310,8 @@ CREATE TABLE `prodi` (
 --
 
 INSERT INTO `prodi` (`id_prodi`, `nama_prodi`, `jurusan_id`, `fakultas_id`) VALUES
-(10, 'D3 Ilmu Komputer', 8, 5);
+(10, 'D3 Ilmu Komputer', 8, 5),
+(11, 'S1 Ilmu Komputer', 8, 5);
 
 -- --------------------------------------------------------
 
@@ -314,7 +344,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `email`, `username`, `password_hash`, `nama`, `reset_hash`, `reset_at`, `reset_expires`, `activate_hash`, `status`, `status_message`, `active`, `force_pass_reset`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 'rfan2442@gmail.com', 'rifanstd', '$2y$10$m3WZ6f84DD5SIEs.KSBd8eHPOS4iY6yQhDGDqUqbkfXtJtxd3V.j.', 'Rifan Setiadi', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-10-31 12:20:09', '2022-10-31 12:20:09', NULL),
-(2, 'yogi@gmail.com', 'yogi', '$2y$10$7NNnOASM0bCq43n1Pf78Q.w3RIkWN4nHUBXNDwodITCZy5p.nD8W.', 'Yogi Andaru', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-10-31 12:21:31', '2022-10-31 12:21:31', NULL);
+(2, 'yogi@gmail.com', 'yogi', '$2y$10$7NNnOASM0bCq43n1Pf78Q.w3RIkWN4nHUBXNDwodITCZy5p.nD8W.', 'Yogi Andaru', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-10-31 12:21:31', '2022-10-31 12:21:31', NULL),
+(5, 'ayumna@gmail.com', 'ayumna', '$2y$10$sqW1qEu97CcviTUzakmZ3u9E2lmvVMLCX4h7E/Ujjx1jgOQmtslle', 'Ayumna', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-11-05 03:48:21', '2022-11-05 03:48:21', NULL);
 
 --
 -- Indexes for dumped tables
@@ -324,7 +355,7 @@ INSERT INTO `users` (`id`, `email`, `username`, `password_hash`, `nama`, `reset_
 -- Indexes for table `admin`
 --
 ALTER TABLE `admin`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`id_admin`),
   ADD UNIQUE KEY `id_user` (`id_user`);
 
 --
@@ -443,7 +474,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_admin` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `auth_activation_attempts`
@@ -461,7 +492,7 @@ ALTER TABLE `auth_groups`
 -- AUTO_INCREMENT for table `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `auth_permissions`
@@ -485,13 +516,13 @@ ALTER TABLE `auth_tokens`
 -- AUTO_INCREMENT for table `fakultas`
 --
 ALTER TABLE `fakultas`
-  MODIFY `id_fakultas` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_fakultas` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `jurusan`
 --
 ALTER TABLE `jurusan`
-  MODIFY `id_jurusan` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_jurusan` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `mahasiswa`
@@ -509,13 +540,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `prodi`
 --
 ALTER TABLE `prodi`
-  MODIFY `id_prodi` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_prodi` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
@@ -525,7 +556,7 @@ ALTER TABLE `users`
 -- Constraints for table `admin`
 --
 ALTER TABLE `admin`
-  ADD CONSTRAINT `admin_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `admin_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `auth_groups_permissions`
