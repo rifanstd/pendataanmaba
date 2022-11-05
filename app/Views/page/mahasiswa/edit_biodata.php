@@ -7,7 +7,10 @@
             <label for="nama" class="form-label">Nama</label>
             <input type="text" class="form-control mb-2" id="nama" name="nama" value="<?= $mahasiswa['nama'] ?>">
             <label for="nik" class="form-label">NIK</label>
-            <input type="text" class="form-control mb-2" id="nik" name="nik" value="<?= $mahasiswa['nik'] ?>">
+            <input type="text" class="form-control mb-2 <?= ($validation->hasError('nik') ? 'is-invalid' : ''); ?>" id="nik" name="nik" value="<?= (old('nik')) ? old('nik') : $mahasiswa['nik'] ?>">
+            <div>
+                <p><?= $validation->getError('nik') ?></p>
+            </div>
             <label for="npm" class="form-label">Nomor Pokok Mahasiswa</label>
             <input type="number" class="form-control mb-2" id="npm" name="npm" value="<?= $mahasiswa['npm'] ?>" readonly>
             <small class="form-text text-muted">Note : Nomor Pokok Mahasiswa di Inputkan oleh Admin</small>
@@ -37,7 +40,7 @@
                     <option value="<?= $fakultas['id_fakultas'] ?>"><?= $fakultas['nama_fakultas'] ?></option>
                 <?php endforeach; ?>
             </select>
-            <button type="submit" class="btn btn-primary mt-3">Validasi</button>
+            <button type="submit" class="btn btn-primary mt-3">Simpan</button>
     </form>
 </div>
 <?= $this->endSection() ?>

@@ -1,7 +1,14 @@
 <?= $this->extend('page/dashboard') ?>
 
 <?= $this->section('content') ?>
-<p style="color: <?= ($mahasiswa['validasi'] === 'Belum' ? 'red' : 'green') ?>"><?= ($mahasiswa['validasi'] === 'Belum' ? 'Data Anda Belum di Validasi. Lengkapi data Anda agar segera di validasi oleh Admin. Jika data sudah lengkap mohon menunggu untuk divalidasi oleh Admin.' : 'Data Anda telah Tervalidasi') ?></p>
+<?php if (session()->getFlashdata('pesan')) : ?>
+    <div class="alert alert-success" role="alert">
+        <?= session()->getFlashdata('pesan'); ?>
+    </div>
+<?php endif; ?>
+<div class="<?= ($mahasiswa['validasi'] === 'Belum' ? 'bg-danger' : 'bg-success') ?> h-25 p-3 mb-2 rounded" style="width: auto;">
+    <p class="p-0 m-0"><span class="text-white align-middle fw-bold"><?= ($mahasiswa['validasi'] === 'Belum' ? 'Data Anda Belum di Validasi. Lengkapi data Anda agar segera di validasi oleh Admin. Jika data sudah lengkap mohon menunggu untuk divalidasi oleh Admin.' : 'Data Anda telah Tervalidasi') ?></span></p>
+</div>
 <p>NPM : <?= $mahasiswa['npm'] ?></p>
 <p>NIK : <?= $mahasiswa['nik'] ?></p>
 <p>Nama : <?= $mahasiswa['nama'] ?></p>
