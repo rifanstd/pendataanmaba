@@ -21,6 +21,8 @@ $routes->group('', ['namespace' => 'Myth\Auth\Controllers'], static function ($r
     // Registration
     $routes->get($reservedRoutes['register'], 'AuthController::register', ['as' => $reservedRoutes['register']]);
     $routes->post($reservedRoutes['register'], 'AuthController::attemptRegister');
+    $routes->get($reservedRoutes['admin/create_admin'], 'AuthController::create_admin', ['filter' => 'role:superadmin']);
+    $routes->post($reservedRoutes['admin/save_admin'], 'AuthController::save_admin', ['filter' => 'role:superadmin']);
 
     // Activation
     $routes->get($reservedRoutes['activate-account'], 'AuthController::activateAccount', ['as' => $reservedRoutes['activate-account']]);
