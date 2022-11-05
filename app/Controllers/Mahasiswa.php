@@ -55,7 +55,7 @@ class Mahasiswa extends BaseController
         $fakultas = $this->fakultasModel->getByID($mahasiswa['fakultas_id']);
 
         $data = [
-            'title' => 'Edit Data Mahasiswa',
+            'title' => 'Edit Data Anda',
             'mahasiswa' => $mahasiswa,
             'prodi' => $prodi,
             'all_prodi' => $this->prodiModel->findAll(),
@@ -63,6 +63,7 @@ class Mahasiswa extends BaseController
             'all_jurusan' => $this->jurusanModel->findAll(),
             'fakultas' => $fakultas,
             'all_fakultas' => $this->fakultasModel->findAll(),
+            'validation' => \Config\Services::validation()
         ];
 
         return view('page/mahasiswa/edit_biodata', $data);
@@ -70,6 +71,22 @@ class Mahasiswa extends BaseController
 
     public function update($id)
     {
+        // cek nama
+        $mahasiswaLama = $this->mahasiswaModel->getByID($id);
+
+        if ($mahasiswaLama[0]['nik'] == $this->request->getVar('nik')) {
+            $rule_nik = 'required';
+        } else {
+            $rule_nik = 'required|is_unique[mahasiswa.nik]';
+        }
+
+        // validasi input
+        if (!$this->validate([
+            'nik' => $rule_nik,
+        ])) {
+            return redirect()->to('/mahasiswa/edit_biodata/' . $id)->withInput();
+        }
+
         $this->mahasiswaModel->update($id, [
             'nama' => $this->request->getVar('nama'),
             'nik' => $this->request->getVar('nik'),
@@ -77,6 +94,8 @@ class Mahasiswa extends BaseController
             'jurusan' => $this->request->getVar('jurusan_id'),
             'fakultas' => $this->request->getVar('fakultas_id'),
         ]);
+
+        session()->setFlashdata('pesan', 'Data berhasil diubah');
 
         return redirect()->to('/mahasiswa/informasi_data_anda');
     }
@@ -108,7 +127,7 @@ class Mahasiswa extends BaseController
 
     public function save_validasi($id)
     {
-        // cek nama
+        // cek npm
         $mahasiswaLama = $this->mahasiswaModel->getByID($id);
 
         if ($mahasiswaLama[0]['npm'] == $this->request->getVar('npm')) {
