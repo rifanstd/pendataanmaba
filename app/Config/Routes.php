@@ -44,34 +44,35 @@ $routes->get('/mahasiswa/edit_biodata/(:num)', 'Mahasiswa::edit_biodata/$1', ['f
 $routes->post('/mahasiswa/update/(:num)', 'Mahasiswa::update/$1', ['filter' => 'role:mahasiswa']);
 $routes->get('/mahasiswa/daftar_mahasiswa', 'Mahasiswa::daftar_mahasiswa', ['filter' => 'role:mahasiswa']);
 
-// Untuk Super Admin dan Admin
-$routes->get('/data_mahasiswa', 'Mahasiswa::index', ['filter' => 'role:superadmin, admin']);
-$routes->get('/validasi/(:num)', 'Mahasiswa::validasi/$1', ['filter' => 'role:superadmin, admin']);
-$routes->post('/validasi/save_validasi/(:num)', 'Mahasiswa::save_validasi/$1', ['filter' => 'role:superadmin, admin']);
+// Untuk Admin
+$routes->get('/data_mahasiswa', 'Mahasiswa::index', ['filter' => 'role:admin']);
+$routes->get('/validasi/(:num)', 'Mahasiswa::validasi/$1', ['filter' => 'role:admin']);
+$routes->post('/validasi/save_validasi/(:num)', 'Mahasiswa::save_validasi/$1', ['filter' => 'role:admin']);
 
-$routes->get('/fakultas/index', 'Fakultas::index', ['filter' => 'role:superadmin, admin']);
-$routes->get('/fakultas/create', 'Fakultas::create', ['filter' => 'role:superadmin, admin']);
-$routes->post('/fakultas/save', 'Fakultas::save', ['filter' => 'role:superadmin, admin']);
-$routes->get('/fakultas/edit/(:num)', 'Fakultas::edit/$1', ['filter' => 'role:superadmin, admin']);
-$routes->post('/fakultas/update/(:num)', 'Fakultas::update/$1', ['filter' => 'role:superadmin, admin']);
-$routes->delete('/fakultas/delete/(:num)', 'Fakultas::delete/$1', ['filter' => 'role:superadmin, admin']);
+$routes->get('/fakultas/index', 'Fakultas::index', ['filter' => 'role:admin']);
+$routes->get('/fakultas/create', 'Fakultas::create', ['filter' => 'role:admin']);
+$routes->post('/fakultas/save', 'Fakultas::save', ['filter' => 'role:admin']);
+$routes->get('/fakultas/edit/(:num)', 'Fakultas::edit/$1', ['filter' => 'role:admin']);
+$routes->post('/fakultas/update/(:num)', 'Fakultas::update/$1', ['filter' => 'role:admin']);
+$routes->delete('/fakultas/delete/(:num)', 'Fakultas::delete/$1', ['filter' => 'role:admin']);
 
-$routes->get('/jurusan/index', 'Jurusan::index', ['filter' => 'role:superadmin, admin']);
-$routes->get('/jurusan/create', 'Jurusan::create', ['filter' => 'role:superadmin, admin']);
-$routes->post('/jurusan/save', 'Jurusan::save', ['filter' => 'role:superadmin, admin']);
-$routes->get('/jurusan/edit/(:num)/(:num)', 'Jurusan::edit/$1/$2', ['filter' => 'role:superadmin, admin']);
-$routes->post('/jurusan/update/(:num)', 'Jurusan::update/$1', ['filter' => 'role:superadmin, admin']);
-$routes->delete('/jurusan/delete/(:num)', 'Jurusan::delete/$1', ['filter' => 'role:superadmin, admin']);
+$routes->get('/jurusan/index', 'Jurusan::index', ['filter' => 'role:admin']);
+$routes->get('/jurusan/create', 'Jurusan::create', ['filter' => 'role:admin']);
+$routes->post('/jurusan/save', 'Jurusan::save', ['filter' => 'role:admin']);
+$routes->get('/jurusan/edit/(:num)/(:num)', 'Jurusan::edit/$1/$2', ['filter' => 'role:admin']);
+$routes->post('/jurusan/update/(:num)', 'Jurusan::update/$1', ['filter' => 'role:admin']);
+$routes->delete('/jurusan/delete/(:num)', 'Jurusan::delete/$1', ['filter' => 'role:admin']);
 
-$routes->get('/prodi/index', 'Prodi::index', ['filter' => 'role:superadmin, admin']);
-$routes->get('/prodi/create', 'Prodi::create', ['filter' => 'role:superadmin, admin']);
-$routes->post('/prodi/save', 'Prodi::save', ['filter' => 'role:superadmin, admin']);
-$routes->get('/prodi/edit/(:num)/(:num)/(:num)', 'Prodi::edit/$1/$2/$3', ['filter' => 'role:superadmin, admin']);
-$routes->post('/prodi/update/(:num)', 'Prodi::update/$1', ['filter' => 'role:superadmin, admin']);
-$routes->delete('/prodi/delete/(:num)', 'Prodi::delete/$1', ['filter' => 'role:superadmin, admin']);
+$routes->get('/prodi/index', 'Prodi::index', ['filter' => 'role:admin']);
+$routes->get('/prodi/create', 'Prodi::create', ['filter' => 'role:admin']);
+$routes->post('/prodi/save', 'Prodi::save', ['filter' => 'role:admin']);
+$routes->get('/prodi/edit/(:num)/(:num)/(:num)', 'Prodi::edit/$1/$2/$3', ['filter' => 'role:admin']);
+$routes->post('/prodi/update/(:num)', 'Prodi::update/$1', ['filter' => 'role:admin']);
+$routes->delete('/prodi/delete/(:num)', 'Prodi::delete/$1', ['filter' => 'role:admin']);
 
 // Untuk superadmin
 $routes->get('/admin/data_admin', 'Admin::index', ['filter' => 'role:superadmin']);
+$routes->delete('/admin/delete/(:num)', 'Admin::delete/$1', ['filter' => 'role:superadmin']);
 
 
 /*

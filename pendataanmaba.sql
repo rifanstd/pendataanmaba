@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 10, 2022 at 04:45 AM
+-- Generation Time: Nov 10, 2022 at 06:28 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.0.23
 
@@ -39,7 +39,7 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`id_admin`, `nama`, `id_user`) VALUES
 (1, 'Rifan Setiadi', 1),
-(4, 'Ayumna', 5);
+(6, 'Ayumna', 7);
 
 -- --------------------------------------------------------
 
@@ -104,7 +104,7 @@ CREATE TABLE `auth_groups_users` (
 
 INSERT INTO `auth_groups_users` (`group_id`, `user_id`) VALUES
 (1, 1),
-(2, 5),
+(2, 7),
 (3, 2);
 
 -- --------------------------------------------------------
@@ -159,7 +159,20 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `succ
 (30, '::1', 'rfan2442@gmail.com', 1, '2022-11-08 03:25:55', 1),
 (31, '::1', 'yogi@gmail.com', 2, '2022-11-08 03:26:11', 1),
 (32, '::1', 'rfan2442@gmail.com', 1, '2022-11-09 20:53:20', 1),
-(33, '::1', 'rfan2442@gmail.com', 1, '2022-11-09 21:44:52', 1);
+(33, '::1', 'rfan2442@gmail.com', 1, '2022-11-09 21:44:52', 1),
+(34, '::1', 'rfan2442@gmail.com', 1, '2022-11-09 22:26:53', 1),
+(35, '::1', 'yogi', NULL, '2022-11-09 22:36:07', 0),
+(36, '::1', 'yogi@gmail.com', 2, '2022-11-09 22:36:15', 1),
+(37, '::1', 'yogi@gmail.com', 2, '2022-11-09 22:37:01', 1),
+(38, '::1', 'rfan2442@gmail.com', 1, '2022-11-09 22:37:17', 1),
+(39, '::1', 'yogi@gmail.com', 2, '2022-11-09 22:38:10', 1),
+(40, '::1', 'rfan2442@gmail.com', 1, '2022-11-09 22:39:28', 1),
+(41, '::1', 'yogi@gmail.com', 2, '2022-11-09 22:51:18', 1),
+(42, '::1', 'rfan2442@gmail.com', 1, '2022-11-09 22:53:59', 1),
+(43, '::1', 'rio@gmail.com', 6, '2022-11-09 22:56:27', 1),
+(44, '::1', 'rio', 6, '2022-11-09 23:04:50', 0),
+(45, '::1', 'rfan2442@gmail.com', 1, '2022-11-09 23:07:33', 1),
+(46, '::1', 'ayumna@gmail.com', 7, '2022-11-09 23:27:54', 1);
 
 -- --------------------------------------------------------
 
@@ -352,7 +365,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `email`, `username`, `password_hash`, `nama`, `reset_hash`, `reset_at`, `reset_expires`, `activate_hash`, `status`, `status_message`, `active`, `force_pass_reset`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 'rfan2442@gmail.com', 'rifanstd', '$2y$10$m3WZ6f84DD5SIEs.KSBd8eHPOS4iY6yQhDGDqUqbkfXtJtxd3V.j.', 'Rifan Setiadi', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-10-31 12:20:09', '2022-10-31 12:20:09', NULL),
 (2, 'yogi@gmail.com', 'yogi', '$2y$10$7NNnOASM0bCq43n1Pf78Q.w3RIkWN4nHUBXNDwodITCZy5p.nD8W.', 'Yogi Andaru', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-10-31 12:21:31', '2022-10-31 12:21:31', NULL),
-(5, 'ayumna@gmail.com', 'ayumna', '$2y$10$sqW1qEu97CcviTUzakmZ3u9E2lmvVMLCX4h7E/Ujjx1jgOQmtslle', 'Ayumna', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-11-05 03:48:21', '2022-11-05 03:48:21', NULL);
+(7, 'ayumna@gmail.com', 'ayumna', '$2y$10$FY5HO3KKMgGCdjX0p9gbJeQ2sAlxm0pBrTqPuIMMxfRxM/HE81rH2', 'Ayumna', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-11-09 23:27:40', '2022-11-09 23:27:40', NULL);
 
 --
 -- Indexes for dumped tables
@@ -481,7 +494,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id_admin` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_admin` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `auth_activation_attempts`
@@ -499,7 +512,7 @@ ALTER TABLE `auth_groups`
 -- AUTO_INCREMENT for table `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `auth_permissions`
@@ -553,7 +566,7 @@ ALTER TABLE `prodi`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables

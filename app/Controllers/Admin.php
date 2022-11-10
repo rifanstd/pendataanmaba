@@ -32,4 +32,13 @@ class Admin extends BaseController
 
         return view('page/admin/create', $data);
     }
+
+    public function delete($id)
+    {
+        dd($this->userModel->delete($id));
+
+        session()->setFlashdata('pesan', 'Data admin berhasil di hapus');
+
+        return redirect()->to('/admin/data_admin');
+    }
 }
