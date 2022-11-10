@@ -70,7 +70,7 @@
                             <li class="<?= ($title == "Informasi Data Anda") ? 'active' : '' ?>"><a class="nav-link" href="/mahasiswa/informasi_data_anda"><i class="far fa-square"></i> <span>Informasi Data Anda</span></a></li>
                             <li class="<?= ($title == "Daftar Mahasiswa") ? 'active' : '' ?>"><a class="nav-link" href="/mahasiswa/daftar_mahasiswa"><i class="far fa-square"></i> <span>Daftar Mahasiswa</span></a></li>
                         <?php endif; ?>
-                        <?php if (in_groups('admin') || in_groups('superadmin')) : ?>
+                        <?php if (in_groups('admin')) :  ?>
                             <li class="<?= ($title == "Data Mahasiswa") ? 'active' : '' ?>"><a class="nav-link" href="/data_mahasiswa"><i class="far fa-square"></i> <span>Data Mahasiswa</span></a></li>
                             <li class="<?= ($title == "Data Fakultas") ? 'active' : '' ?>"><a class="nav-link" href="/fakultas/index"><i class="far fa-square"></i> <span>Data Fakultas</span></a></li>
                             <li class="<?= ($title == "Data Jurusan") ? 'active' : '' ?>"><a class="nav-link" href="/jurusan/index"><i class="far fa-square"></i> <span>Data Jurusan</span></a></li>
