@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 05, 2022 at 09:50 AM
+-- Generation Time: Nov 10, 2022 at 04:45 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.0.23
 
@@ -152,7 +152,14 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `succ
 (23, '::1', 'rfan2442@gmail.com', 1, '2022-11-05 03:19:40', 1),
 (24, '::1', 'ayumna', 4, '2022-11-05 03:43:52', 0),
 (25, '::1', 'rfan2442@gmail.com', 1, '2022-11-05 03:46:20', 1),
-(26, '::1', 'ayumna@gmail.com', 5, '2022-11-05 03:48:33', 1);
+(26, '::1', 'ayumna@gmail.com', 5, '2022-11-05 03:48:33', 1),
+(27, '::1', 'rfanstd24@gmail.com', NULL, '2022-11-08 03:18:30', 0),
+(28, '::1', 'rfan2442@gmail.com', 1, '2022-11-08 03:20:22', 1),
+(29, '::1', 'yogi@gmail.com', 2, '2022-11-08 03:22:48', 1),
+(30, '::1', 'rfan2442@gmail.com', 1, '2022-11-08 03:25:55', 1),
+(31, '::1', 'yogi@gmail.com', 2, '2022-11-08 03:26:11', 1),
+(32, '::1', 'rfan2442@gmail.com', 1, '2022-11-09 20:53:20', 1),
+(33, '::1', 'rfan2442@gmail.com', 1, '2022-11-09 21:44:52', 1);
 
 -- --------------------------------------------------------
 
@@ -274,7 +281,7 @@ CREATE TABLE `mahasiswa` (
 --
 
 INSERT INTO `mahasiswa` (`id`, `nama`, `nik`, `npm`, `angkatan`, `kurikulum`, `status`, `jalur_pendaftaran`, `validasi`, `id_user`, `prodi_id`, `jurusan_id`, `fakultas_id`) VALUES
-(1, 'Yogi Andaru', 3603010112129990, 2017051001, 2022, 2020, 'Aktif', 'SBMPTN', 'Belum', 2, 10, 8, 5);
+(1, 'Yogi Andaru', 3603010112129990, 2017051001, 2022, 2020, 'Aktif', 'SBMPTN', 'Valid', 2, 10, 8, 5);
 
 -- --------------------------------------------------------
 
@@ -492,7 +499,7 @@ ALTER TABLE `auth_groups`
 -- AUTO_INCREMENT for table `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `auth_permissions`
