@@ -10,7 +10,7 @@
             <label for="nik" class="form-label">NIK</label>
             <input type="text" class="form-control mb-2" id="nik" name="nik" value="<?= $mahasiswa[0]['nik'] ?>" readonly>
             <label for="npm" class="form-label">Nomor Pokok Mahasiswa</label>
-            <input type="number" class="form-control mb-2 <?= ($validation->hasError('npm') ? 'is-invalid' : ''); ?>" id="npm" name="npm" value="<?= (old('npm')) ? old('npm') : $mahasiswa[0]['npm'] ?>">
+            <input type="number" class="form-control mb-2" id="npm" name="npm" value="<?= $mahasiswa[0]['npm'] ?>" readonly>
             <label for="angkatan" class="form-label">Angakatan</label>
             <input type="number" class="form-control mb-2" id="angkatan" name="angkatan" value="<?= $mahasiswa[0]['angkatan'] ?>" readonly>
             <label for="kurikulum" class="form-label">Kurikulum</label>

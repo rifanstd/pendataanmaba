@@ -35,7 +35,7 @@ class Admin extends BaseController
 
     public function delete($id)
     {
-        dd($this->userModel->delete($id));
+        $this->userModel->delete($id);
 
         session()->setFlashdata('pesan', 'Data admin berhasil di hapus');
 

@@ -71,18 +71,26 @@ class Mahasiswa extends BaseController
 
     public function update($id)
     {
-        // cek nama
         $mahasiswaLama = $this->mahasiswaModel->getByID($id);
 
+        // cek nik
         if ($mahasiswaLama[0]['nik'] == $this->request->getVar('nik')) {
             $rule_nik = 'required';
         } else {
             $rule_nik = 'required|is_unique[mahasiswa.nik]';
         }
 
+        // cek npm
+        if ($mahasiswaLama[0]['npm'] == $this->request->getVar('npm')) {
+            $rule_npm = 'required';
+        } else {
+            $rule_npm = 'required|is_unique[mahasiswa.npm]';
+        }
+
         // validasi input
         if (!$this->validate([
             'nik' => $rule_nik,
+            'npm' => $rule_npm,
         ])) {
             return redirect()->to('/mahasiswa/edit_biodata/' . $id)->withInput();
         }
@@ -90,6 +98,7 @@ class Mahasiswa extends BaseController
         $this->mahasiswaModel->update($id, [
             'nama' => $this->request->getVar('nama'),
             'nik' => $this->request->getVar('nik'),
+            'npm' => $this->request->getVar('npm'),
             'prodi' => $this->request->getVar('prodi_id'),
             'jurusan' => $this->request->getVar('jurusan_id'),
             'fakultas' => $this->request->getVar('fakultas_id'),
@@ -127,26 +136,9 @@ class Mahasiswa extends BaseController
 
     public function save_validasi($id)
     {
-        // cek npm
-        $mahasiswaLama = $this->mahasiswaModel->getByID($id);
-
-        if ($mahasiswaLama[0]['npm'] == $this->request->getVar('npm')) {
-            $rule_npm = 'required';
-        } else {
-            $rule_npm = 'required|is_unique[mahasiswa.npm]';
-        }
-
-        // validasi input
-        if (!$this->validate([
-            'npm' => $rule_npm,
-        ])) {
-            return redirect()->to('/validasi/' . $id)->withInput();
-        }
-
         $this->mahasiswaModel->update($id, [
             'nama' => $this->request->getVar('nama'),
             'nik' => $this->request->getVar('nik'),
-            'npm' => $this->request->getVar('npm'),
             'angkatan' => $this->request->getVar('angkatan'),
             'kurikulum' => $this->request->getVar('kurikulum'),
             'status' => $this->request->getVar('status'),
