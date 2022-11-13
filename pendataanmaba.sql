@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 10, 2022 at 06:28 AM
+-- Generation Time: Nov 13, 2022 at 10:32 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.0.23
 
@@ -172,7 +172,8 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `succ
 (43, '::1', 'rio@gmail.com', 6, '2022-11-09 22:56:27', 1),
 (44, '::1', 'rio', 6, '2022-11-09 23:04:50', 0),
 (45, '::1', 'rfan2442@gmail.com', 1, '2022-11-09 23:07:33', 1),
-(46, '::1', 'ayumna@gmail.com', 7, '2022-11-09 23:27:54', 1);
+(46, '::1', 'ayumna@gmail.com', 7, '2022-11-09 23:27:54', 1),
+(47, '::1', 'yogi@gmail.com', 2, '2022-11-13 03:30:47', 1);
 
 -- --------------------------------------------------------
 
@@ -294,7 +295,7 @@ CREATE TABLE `mahasiswa` (
 --
 
 INSERT INTO `mahasiswa` (`id`, `nama`, `nik`, `npm`, `angkatan`, `kurikulum`, `status`, `jalur_pendaftaran`, `validasi`, `id_user`, `prodi_id`, `jurusan_id`, `fakultas_id`) VALUES
-(1, 'Yogi Andaru', 3603010112129990, 2017051001, 2022, 2020, 'Aktif', 'SBMPTN', 'Valid', 2, 10, 8, 5);
+(1, 'Yogi Andaru', 3603010112129990, 2017051001, 2022, 2020, 'Aktif', 'SBMPTN', 'Belum', 2, 10, 8, 5);
 
 -- --------------------------------------------------------
 
@@ -512,7 +513,7 @@ ALTER TABLE `auth_groups`
 -- AUTO_INCREMENT for table `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `auth_permissions`

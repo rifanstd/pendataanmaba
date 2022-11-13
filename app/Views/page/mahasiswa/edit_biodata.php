@@ -12,8 +12,10 @@
                 <p><?= $validation->getError('nik') ?></p>
             </div>
             <label for="npm" class="form-label">Nomor Pokok Mahasiswa</label>
-            <input type="number" class="form-control mb-2" id="npm" name="npm" value="<?= $mahasiswa['npm'] ?>" readonly>
-            <small class="form-text text-muted">Note : Nomor Pokok Mahasiswa di Inputkan oleh Admin</small>
+            <input type="number" class="form-control mb-2 <?= ($validation->hasError('npm') ? 'is-invalid' : ''); ?>" id="npm" name="npm" value="<?= (old('npm')) ? old('npm') : $mahasiswa['npm'] ?>">
+            <div>
+                <p><?= $validation->getError('npm') ?></p>
+            </div>
             <label for="angkatan" class="form-label mt-2">Angakatan</label>
             <input type="number" class="form-control mb-2" id="angkatan" name="angkatan" value="<?= $mahasiswa['angkatan'] ?>" readonly>
             <label for="kurikulum" class="form-label">Kurikulum</label>
