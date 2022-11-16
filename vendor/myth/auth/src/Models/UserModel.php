@@ -15,7 +15,11 @@ class UserModel extends Model
     protected $table          = 'users';
     protected $primaryKey     = 'id';
     protected $returnType     = User::class;
+<<<<<<< HEAD
     protected $useSoftDeletes = true;
+=======
+    // protected $useSoftDeletes = true;
+>>>>>>> f0b96377d88efd856abeaa72c0c9b0e7dec34166
 
     protected $allowedFields  = [
         'nama', 'email', 'username', 'password_hash', 'reset_hash', 'reset_at', 'reset_expires', 'activate_hash',

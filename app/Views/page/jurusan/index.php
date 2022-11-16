@@ -3,7 +3,15 @@
 <?= $this->section('content') ?>
 
 <div class="section-body">
+<<<<<<< HEAD
 
+=======
+    <?php if (session()->getFlashdata('pesan')) : ?>
+        <div class="alert alert-success" role="alert">
+            <?= session()->getFlashdata('pesan'); ?>
+        </div>
+    <?php endif; ?>
+>>>>>>> f0b96377d88efd856abeaa72c0c9b0e7dec34166
     <div class="row">
         <div class="col-6">
             <div class="card">
@@ -39,7 +47,11 @@
                                                 <?= csrf_field() ?>
                                                 <a data-bs-toggle="tooltip" data-bs-placement="top" title="Edit" href="/jurusan/edit/<?= $jur['id_jurusan'] ?>/<?= $jur['id_fakultas'] ?>" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
                                                 <input type="hidden" name="_method" value="DELETE">
+<<<<<<< HEAD
                                                 <button data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" type="submit" class="btn btn-danger btn-delete"><i class="bi bi-trash"></i></button>
+=======
+                                                <button data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" type="submit" class="btn btn-danger btn-delete" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?');"><i class="bi bi-trash"></i></button>
+>>>>>>> f0b96377d88efd856abeaa72c0c9b0e7dec34166
                                             </form>
                                         </td>
                                     </tr>

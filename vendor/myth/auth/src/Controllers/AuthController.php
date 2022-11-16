@@ -200,7 +200,11 @@ class AuthController extends Controller
         $mahasiswaModel->insert($dataMhs);
         // --- 
 
+<<<<<<< HEAD
         // UNtuk admin
+=======
+        // UNtuk superadmin
+>>>>>>> f0b96377d88efd856abeaa72c0c9b0e7dec34166
         // $dataAdmin = [
         //     'nama' => $this->request->getPost('nama'),
         //     'id_user' => $users->getInsertID(),
@@ -224,6 +228,72 @@ class AuthController extends Controller
         return redirect()->route('login')->with('message', lang('Auth.registerSuccess'));
     }
 
+<<<<<<< HEAD
+=======
+    public function create_admin()
+    {
+
+        return $this->_render($this->config->views['create_admin'], ['config' => $this->config, 'title' => 'Tambah Data Admin']);
+    }
+
+    public function save_admin()
+    {
+        $users = model(UserModel::class);
+        $users->withGroup('admin');
+
+        // Validate basics first since some password rules rely on these fields
+        $rules = config('Validation')->registrationRules ?? [
+            'nama' => 'required',
+            'username' => 'required|alpha_numeric_space|min_length[3]|max_length[30]|is_unique[users.username]',
+            'email'    => 'required|valid_email|is_unique[users.email]',
+        ];
+
+        if (!$this->validate($rules)) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
+
+        // Validate passwords since they can only be validated properly here
+        $rules = [
+            'password'     => 'required|strong_password',
+            'pass_confirm' => 'required|matches[password]',
+        ];
+
+        if (!$this->validate($rules)) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
+
+        // Save the user
+        $allowedPostFields = array_merge(['password'], $this->config->validFields, $this->config->personalFields);
+        $user              = new User($this->request->getPost($allowedPostFields));
+
+        // langsung aktivasi akun
+        $user->activate();
+
+        // Ensure default group gets assigned if set
+        if (!empty($this->config->defaultUserGroup)) {
+            $users = $users->withGroup($this->config->defaultUserGroup);
+        }
+
+        if (!$users->save($user)) {
+            return redirect()->back()->withInput()->with('errors', $users->errors());
+        }
+
+        // memasukkan data admin
+        $dataAdmin = [
+            'nama' => $this->request->getPost('nama'),
+            'id_user' => $users->getInsertID(),
+        ];
+
+        $adminModel = new AdminModel();
+        $adminModel->insert($dataAdmin);
+
+        session()->setFlashdata('pesan', 'Data Admin Berhasil Ditambahkan');
+
+        // Success!
+        return redirect()->to('/admin/data_admin')->with('message', lang('Auth.registerSuccess'));
+    }
+
+>>>>>>> f0b96377d88efd856abeaa72c0c9b0e7dec34166
     //--------------------------------------------------------------------
     // Forgot Password
     //--------------------------------------------------------------------

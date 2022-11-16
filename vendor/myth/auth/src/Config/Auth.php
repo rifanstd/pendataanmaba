@@ -53,6 +53,11 @@ class Auth extends BaseConfig
         'resend-activate-account' => 'resend-activate-account',
         'forgot'                  => 'forgot',
         'reset-password'          => 'reset-password',
+<<<<<<< HEAD
+=======
+        'admin/create_admin'      => 'admin/create_admin',
+        'admin/save_admin'        => 'admin/save_admin',
+>>>>>>> f0b96377d88efd856abeaa72c0c9b0e7dec34166
     ];
 
     /**
@@ -80,6 +85,10 @@ class Auth extends BaseConfig
         'reset'           => 'App\Views\auth\reset',
         'emailForgot'     => 'Myth\Auth\Views\emails\forgot',
         'emailActivation' => 'Myth\Auth\Views\emails\activation',
+<<<<<<< HEAD
+=======
+        'create_admin'    => 'App\Views\page\admin\create',
+>>>>>>> f0b96377d88efd856abeaa72c0c9b0e7dec34166
     ];
 
     /**
@@ -188,8 +197,13 @@ class Auth extends BaseConfig
      *
      * @var string|null Name of the ActivatorInterface class
      */
+<<<<<<< HEAD
     // public $requireActivation = 'Myth\Auth\Authentication\Activators\EmailActivator';
     public $requireActivation = null;
+=======
+    public $requireActivation = 'Myth\Auth\Authentication\Activators\EmailActivator';
+    // public $requireActivation = null;
+>>>>>>> f0b96377d88efd856abeaa72c0c9b0e7dec34166
 
     /**
      * --------------------------------------------------------------------
@@ -201,8 +215,13 @@ class Auth extends BaseConfig
      *
      * @var string|null Name of the ResetterInterface class
      */
+<<<<<<< HEAD
     // public $activeResetter = 'Myth\Auth\Authentication\Resetters\EmailResetter';
     public $activeResetter = null;
+=======
+    public $activeResetter = 'Myth\Auth\Authentication\Resetters\EmailResetter';
+    // public $activeResetter = null;
+>>>>>>> f0b96377d88efd856abeaa72c0c9b0e7dec34166
 
     /**
      * --------------------------------------------------------------------

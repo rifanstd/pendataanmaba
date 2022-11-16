@@ -49,7 +49,11 @@
                 <ul class="navbar-nav navbar-right">
                     <li class=""><a href="#" class="nav-link nav-link-lg nav-link-user">
                             <img alt="image" src="/stisla/dist/assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
+<<<<<<< HEAD
                             <div class="d-sm-none d-lg-inline-block">Hi, Ujang Maman</div>
+=======
+                            <div class="d-sm-none d-lg-inline-block">Hi, <?= user()->username; ?></div>
+>>>>>>> f0b96377d88efd856abeaa72c0c9b0e7dec34166
                         </a>
                     </li>
                 </ul>
@@ -58,6 +62,11 @@
                 <aside id="sidebar-wrapper">
                     <div class="sidebar-brand">
                         <a href="/"><?php if (in_groups('mahasiswa')) : ?>MAHASISWA<?php endif; ?><?php if (in_groups('superadmin')) : ?>SUPERADMIN<?php endif; ?><?php if (in_groups('admin')) : ?>ADMIN<?php endif; ?></a>
+<<<<<<< HEAD
+=======
+                        ||
+                        <a href="/"><?= user()->username; ?></a>
+>>>>>>> f0b96377d88efd856abeaa72c0c9b0e7dec34166
                     </div>
                     <div class="sidebar-brand sidebar-brand-sm">
                         <a href="/"><?php if (in_groups('mahasiswa')) : ?>M<?php endif; ?><?php if (in_groups('superadmin')) : ?>S<?php endif; ?><?php if (in_groups('admin')) : ?>A<?php endif; ?></a>
@@ -66,19 +75,31 @@
                         <li class="menu-header">Starter</li>
                         <?php if (in_groups('mahasiswa')) : ?>
                             <li class="<?= ($title == "Informasi Data Anda") ? 'active' : '' ?>"><a class="nav-link" href="/mahasiswa/informasi_data_anda"><i class="far fa-square"></i> <span>Informasi Data Anda</span></a></li>
+<<<<<<< HEAD
                             <li class="<?= ($title == "Biodata Anda") ? 'active' : '' ?>"><a class="nav-link" href="/mahasiswa/biodata"><i class="far fa-square"></i> <span>Biodata Anda</span></a></li>
                             <li class="<?= ($title == "Daftar Mahasiswa") ? 'active' : '' ?>"><a class="nav-link" href="Belum ada"><i class="far fa-square"></i> <span>Daftar Mahasiswa</span></a></li>
                         <?php endif; ?>
                         <?php if (in_groups('admin') || in_groups('superadmin')) : ?>
+=======
+                            <li class="<?= ($title == "Daftar Mahasiswa") ? 'active' : '' ?>"><a class="nav-link" href="/mahasiswa/daftar_mahasiswa"><i class="far fa-square"></i> <span>Daftar Mahasiswa</span></a></li>
+                        <?php endif; ?>
+                        <?php if (in_groups('admin')) :  ?>
+>>>>>>> f0b96377d88efd856abeaa72c0c9b0e7dec34166
                             <li class="<?= ($title == "Data Mahasiswa") ? 'active' : '' ?>"><a class="nav-link" href="/data_mahasiswa"><i class="far fa-square"></i> <span>Data Mahasiswa</span></a></li>
                             <li class="<?= ($title == "Data Fakultas") ? 'active' : '' ?>"><a class="nav-link" href="/fakultas/index"><i class="far fa-square"></i> <span>Data Fakultas</span></a></li>
                             <li class="<?= ($title == "Data Jurusan") ? 'active' : '' ?>"><a class="nav-link" href="/jurusan/index"><i class="far fa-square"></i> <span>Data Jurusan</span></a></li>
                             <li class="<?= ($title == "Data Program Studi") ? 'active' : '' ?>"><a class="nav-link" href="/prodi/index"><i class="far fa-square"></i> <span>Data Program Studi</span></a></li>
                         <?php endif; ?>
                         <?php if (in_groups('superadmin')) : ?>
+<<<<<<< HEAD
                             <li class="<?= ($title == "Admin") ? 'active' : '' ?>"><a class="nav-link" href="Belum ada"><i class="far fa-square"></i> <span>Admin</span></a></li>
                         <?php endif; ?>
                         <li><a class="nav-link" href="/logout"><i class="far fa-square"></i> <span>Lougout</span></a></li>
+=======
+                            <li class="<?= ($title == "Admin") ? 'active' : '' ?>"><a class="nav-link" href="/admin/data_admin"><i class="far fa-square"></i> <span>Data Admin</span></a></li>
+                        <?php endif; ?>
+                        <li><a class="nav-link" href="/logout"><i class="far fa-square"></i> <span>Logout</span></a></li>
+>>>>>>> f0b96377d88efd856abeaa72c0c9b0e7dec34166
                     </ul>
                 </aside>
             </div>

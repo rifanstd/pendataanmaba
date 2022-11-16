@@ -46,6 +46,12 @@
                         <!-- untuk grup role -->
                         <input type="hidden" value="mahasiswa" name="group_id">
 
+<<<<<<< HEAD
+=======
+                        <!-- Untuk superadmin -->
+                        <!-- <input type="hidden" value="superadmin" name="group_id"> -->
+
+>>>>>>> f0b96377d88efd856abeaa72c0c9b0e7dec34166
                         <button type="submit" class="btn btn-primary btn-block"><?= lang('Auth.register') ?></button>
                     </form>
 

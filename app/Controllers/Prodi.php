@@ -30,9 +30,16 @@ class Prodi extends BaseController
     public function create()
     {
         $data = [
+<<<<<<< HEAD
             'title' => 'Tambah Data Jurusan',
             'jurusan' => $this->jurusanModel->findAll(),
             'fakultas' => $this->fakultasModel->findAll()
+=======
+            'title' => 'Tambah Data Program Studi',
+            'jurusan' => $this->jurusanModel->findAll(),
+            'fakultas' => $this->fakultasModel->findAll(),
+            'validation' => \Config\Services::validation()
+>>>>>>> f0b96377d88efd856abeaa72c0c9b0e7dec34166
         ];
 
         return view('page/prodi/create', $data);
@@ -40,6 +47,16 @@ class Prodi extends BaseController
 
     public function save()
     {
+<<<<<<< HEAD
+=======
+        // validasi input
+        if (!$this->validate([
+            'nama' => 'required|is_unique[prodi.nama_prodi]',
+        ])) {
+            return redirect()->to('/prodi/create')->withInput();
+        }
+
+>>>>>>> f0b96377d88efd856abeaa72c0c9b0e7dec34166
         $data = [
             'nama_prodi' => $this->request->getVar('nama'),
             'jurusan_id' => $this->request->getVar('jurusan_id'),
@@ -48,6 +65,11 @@ class Prodi extends BaseController
 
         $this->prodiModel->insert($data);
 
+<<<<<<< HEAD
+=======
+        session()->setFlashdata('pesan', 'Data berhasil ditambahkan');
+
+>>>>>>> f0b96377d88efd856abeaa72c0c9b0e7dec34166
         return redirect()->to('/prodi/index');
     }
 
@@ -60,6 +82,10 @@ class Prodi extends BaseController
             'all_jurusan' => $this->jurusanModel->findAll(),
             'fakultas' => $this->fakultasModel->getByProdi($id_fakultas),
             'all_fakultas' => $this->fakultasModel->findAll(),
+<<<<<<< HEAD
+=======
+            'validation' => \Config\Services::validation()
+>>>>>>> f0b96377d88efd856abeaa72c0c9b0e7dec34166
         ];
 
         return view('page/prodi/edit', $data);
@@ -67,12 +93,36 @@ class Prodi extends BaseController
 
     public function update($id)
     {
+<<<<<<< HEAD
+=======
+        // cek judul
+        $prodiLama = $this->prodiModel->getByID($id);
+
+        if ($prodiLama[0]['nama_prodi'] == $this->request->getVar('nama')) {
+            $rule_nama = 'required';
+        } else {
+            $rule_nama = 'required|is_unique[prodi.nama_prodi]';
+        }
+
+        // validasi input
+        if (!$this->validate([
+            'nama' => $rule_nama,
+        ])) {
+            return redirect()->to('/prodi/edit/' . $id . '/' . $prodiLama[0]['jurusan_id'] . '/' . $prodiLama[0]['fakultas_id'])->withInput();
+        }
+
+>>>>>>> f0b96377d88efd856abeaa72c0c9b0e7dec34166
         $this->prodiModel->update($id, [
             'nama_prodi' => $this->request->getVar('nama'),
             'jurusan_id' => $this->request->getVar('jurusan_id'),
             'fakultas_id' => $this->request->getVar('fakultas_id')
         ]);
 
+<<<<<<< HEAD
+=======
+        session()->setFlashdata('pesan', 'Data berhasil diubah');
+
+>>>>>>> f0b96377d88efd856abeaa72c0c9b0e7dec34166
         return redirect()->to('/prodi/index');
     }
 
@@ -80,6 +130,11 @@ class Prodi extends BaseController
     {
         $this->prodiModel->delete($id);
 
+<<<<<<< HEAD
+=======
+        session()->setFlashdata('pesan', 'Data berhasil dihapus');
+
+>>>>>>> f0b96377d88efd856abeaa72c0c9b0e7dec34166
         return redirect()->to('/prodi/index');
     }
 }

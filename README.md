@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # CodeIgniter 4 Application Starter
 
 ## What is CodeIgniter?
@@ -61,3 +62,6 @@ Additionally, make sure that the following extensions are enabled in your PHP:
 - [mbstring](http://php.net/manual/en/mbstring.installation.php)
 - [mysqlnd](http://php.net/manual/en/mysqlnd.install.php)
 - xml (enabled by default - don't turn it off)
+=======
+# Projek Pendataan Mahasiswa Baru Berbasis PHP dengan Framework Codeigniter 4
+>>>>>>> f0b96377d88efd856abeaa72c0c9b0e7dec34166

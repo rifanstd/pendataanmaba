@@ -8,7 +8,11 @@ class AdminModel extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'admin';
+<<<<<<< HEAD
     protected $primaryKey       = 'id';
+=======
+    protected $primaryKey       = 'id_admin';
+>>>>>>> f0b96377d88efd856abeaa72c0c9b0e7dec34166
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
@@ -21,4 +25,19 @@ class AdminModel extends Model
     // protected $updatedField  = 'updated_at';
     // protected $deletedField  = 'deleted_at';
 
+<<<<<<< HEAD
+=======
+    public function getAdmin()
+    {
+        $dataAdmin = $this->db->table($this->table)
+            ->join('auth_groups_users', 'auth_groups_users.user_id = admin.id_user')
+            ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
+            ->get()
+            ->getResultArray();
+
+        // dd($dataAdmin);
+
+        return $dataAdmin;
+    }
+>>>>>>> f0b96377d88efd856abeaa72c0c9b0e7dec34166
 }
