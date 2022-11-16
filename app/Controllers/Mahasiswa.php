@@ -10,7 +10,6 @@ use App\Models\ProdiModel;
 
 class Mahasiswa extends BaseController
 {
-
     public function __construct()
     {
         $this->mahasiswaModel = new MahasiswaModel();
@@ -25,6 +24,8 @@ class Mahasiswa extends BaseController
             'title' => 'Data Mahasiswa',
             'mahasiswa' => $this->mahasiswaModel->getAllMahasiswa(),
         ];
+
+        // dd($data);
 
         return view('page/mahasiswa/index', $data);
     }
@@ -73,35 +74,37 @@ class Mahasiswa extends BaseController
     {
         $mahasiswaLama = $this->mahasiswaModel->getByID($id);
 
-        // cek nik
-        if ($mahasiswaLama[0]['nik'] == $this->request->getVar('nik')) {
-            $rule_nik = 'required';
-        } else {
-            $rule_nik = 'required|is_unique[mahasiswa.nik]';
-        }
+        if (count($mahasiswaLama) !== 0) {
+            // cek nik
+            if ($mahasiswaLama[0]['nik'] == $this->request->getVar('nik')) {
+                $rule_nik = 'required';
+            } else {
+                $rule_nik = 'required|is_unique[mahasiswa.nik]';
+            }
 
-        // cek npm
-        if ($mahasiswaLama[0]['npm'] == $this->request->getVar('npm')) {
-            $rule_npm = 'required';
-        } else {
-            $rule_npm = 'required|is_unique[mahasiswa.npm]';
-        }
+            // cek npm
+            if ($mahasiswaLama[0]['npm'] == $this->request->getVar('npm')) {
+                $rule_npm = 'required';
+            } else {
+                $rule_npm = 'required|is_unique[mahasiswa.npm]';
+            }
 
-        // validasi input
-        if (!$this->validate([
-            'nik' => $rule_nik,
-            'npm' => $rule_npm,
-        ])) {
-            return redirect()->to('/mahasiswa/edit_biodata/' . $id)->withInput();
+            // validasi input
+            if (!$this->validate([
+                'nik' => $rule_nik,
+                'npm' => $rule_npm,
+            ])) {
+                return redirect()->to('/mahasiswa/edit_biodata/' . $id)->withInput();
+            }
         }
 
         $this->mahasiswaModel->update($id, [
             'nama' => $this->request->getVar('nama'),
             'nik' => $this->request->getVar('nik'),
             'npm' => $this->request->getVar('npm'),
-            'prodi' => $this->request->getVar('prodi_id'),
-            'jurusan' => $this->request->getVar('jurusan_id'),
-            'fakultas' => $this->request->getVar('fakultas_id'),
+            'prodi_id' => $this->request->getVar('prodi_id'),
+            'jurusan_id' => $this->request->getVar('jurusan_id'),
+            'fakultas_id' => $this->request->getVar('fakultas_id'),
         ]);
 
         session()->setFlashdata('pesan', 'Data berhasil diubah');
