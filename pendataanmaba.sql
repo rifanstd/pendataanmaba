@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2022 at 10:32 AM
+-- Generation Time: Nov 16, 2022 at 02:48 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.0.23
 
@@ -39,7 +39,7 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`id_admin`, `nama`, `id_user`) VALUES
 (1, 'Rifan Setiadi', 1),
-(6, 'Ayumna', 7);
+(7, 'Ayumna', 8);
 
 -- --------------------------------------------------------
 
@@ -104,7 +104,7 @@ CREATE TABLE `auth_groups_users` (
 
 INSERT INTO `auth_groups_users` (`group_id`, `user_id`) VALUES
 (1, 1),
-(2, 7),
+(2, 8),
 (3, 2);
 
 -- --------------------------------------------------------
@@ -173,7 +173,14 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `succ
 (44, '::1', 'rio', 6, '2022-11-09 23:04:50', 0),
 (45, '::1', 'rfan2442@gmail.com', 1, '2022-11-09 23:07:33', 1),
 (46, '::1', 'ayumna@gmail.com', 7, '2022-11-09 23:27:54', 1),
-(47, '::1', 'yogi@gmail.com', 2, '2022-11-13 03:30:47', 1);
+(47, '::1', 'yogi@gmail.com', 2, '2022-11-13 03:30:47', 1),
+(48, '::1', 'rfan2442@gmail.com', 1, '2022-11-13 03:44:53', 1),
+(49, '::1', 'ayumna', NULL, '2022-11-13 03:45:15', 0),
+(50, '::1', 'ayumna', NULL, '2022-11-13 03:45:25', 0),
+(51, '::1', 'rfan2442@gmail.com', 1, '2022-11-13 03:45:36', 1),
+(52, '::1', 'ayumna@gmail.com', 8, '2022-11-13 03:47:05', 1),
+(53, '::1', 'yogi', NULL, '2022-11-13 03:48:05', 0),
+(54, '::1', 'yogi@gmail.com', 2, '2022-11-13 03:48:19', 1);
 
 -- --------------------------------------------------------
 
@@ -295,7 +302,7 @@ CREATE TABLE `mahasiswa` (
 --
 
 INSERT INTO `mahasiswa` (`id`, `nama`, `nik`, `npm`, `angkatan`, `kurikulum`, `status`, `jalur_pendaftaran`, `validasi`, `id_user`, `prodi_id`, `jurusan_id`, `fakultas_id`) VALUES
-(1, 'Yogi Andaru', 3603010112129990, 2017051001, 2022, 2020, 'Aktif', 'SBMPTN', 'Belum', 2, 10, 8, 5);
+(1, 'Yogi Andaru', 3603010112129990, 2017051001, 2022, 2020, 'Aktif', 'SBMPTN', 'Valid', 2, 10, 8, 5);
 
 -- --------------------------------------------------------
 
@@ -366,7 +373,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `email`, `username`, `password_hash`, `nama`, `reset_hash`, `reset_at`, `reset_expires`, `activate_hash`, `status`, `status_message`, `active`, `force_pass_reset`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 'rfan2442@gmail.com', 'rifanstd', '$2y$10$m3WZ6f84DD5SIEs.KSBd8eHPOS4iY6yQhDGDqUqbkfXtJtxd3V.j.', 'Rifan Setiadi', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-10-31 12:20:09', '2022-10-31 12:20:09', NULL),
 (2, 'yogi@gmail.com', 'yogi', '$2y$10$7NNnOASM0bCq43n1Pf78Q.w3RIkWN4nHUBXNDwodITCZy5p.nD8W.', 'Yogi Andaru', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-10-31 12:21:31', '2022-10-31 12:21:31', NULL),
-(7, 'ayumna@gmail.com', 'ayumna', '$2y$10$FY5HO3KKMgGCdjX0p9gbJeQ2sAlxm0pBrTqPuIMMxfRxM/HE81rH2', 'Ayumna', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-11-09 23:27:40', '2022-11-09 23:27:40', NULL);
+(8, 'ayumna@gmail.com', 'ayumna', '$2y$10$2BKi0Jo5fdImouevY6mz1ew.6H80iVLy1XDqNpwodQJt4EY6xkhUK', 'Ayumna', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-11-13 03:46:56', '2022-11-13 03:46:56', NULL);
 
 --
 -- Indexes for dumped tables
@@ -495,7 +502,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id_admin` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_admin` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `auth_activation_attempts`
@@ -513,7 +520,7 @@ ALTER TABLE `auth_groups`
 -- AUTO_INCREMENT for table `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `auth_permissions`
@@ -567,7 +574,7 @@ ALTER TABLE `prodi`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
