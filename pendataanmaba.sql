@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2022 at 02:48 PM
+-- Generation Time: Nov 17, 2022 at 06:20 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.0.23
 
@@ -38,8 +38,8 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id_admin`, `nama`, `id_user`) VALUES
-(1, 'Rifan Setiadi', 1),
-(7, 'Ayumna', 8);
+(1, 'Super Admin', 1),
+(2, 'Rifan Setiadi', 2);
 
 -- --------------------------------------------------------
 
@@ -54,6 +54,14 @@ CREATE TABLE `auth_activation_attempts` (
   `token` varchar(255) DEFAULT NULL,
   `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `auth_activation_attempts`
+--
+
+INSERT INTO `auth_activation_attempts` (`id`, `ip_address`, `user_agent`, `token`, `created_at`) VALUES
+(1, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36', '2a072048a09fc3ee24b32a55c43a9594', '2022-11-16 08:06:33'),
+(2, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36', '596010448b7013abc847ed36c4ffcee1', '2022-11-16 23:13:17');
 
 -- --------------------------------------------------------
 
@@ -104,8 +112,9 @@ CREATE TABLE `auth_groups_users` (
 
 INSERT INTO `auth_groups_users` (`group_id`, `user_id`) VALUES
 (1, 1),
-(2, 8),
-(3, 2);
+(2, 2),
+(3, 3),
+(3, 4);
 
 -- --------------------------------------------------------
 
@@ -127,60 +136,28 @@ CREATE TABLE `auth_logins` (
 --
 
 INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `success`) VALUES
-(1, '::1', 'yogi@gmail.com', 2, '2022-10-31 12:21:51', 1),
-(2, '::1', 'yogi@gmail.com', 2, '2022-11-01 06:54:55', 1),
-(3, '::1', 'rfan2442@gmail.com', 1, '2022-11-01 12:21:37', 1),
-(4, '::1', 'rfan2442@gmail.com', 1, '2022-11-02 19:36:58', 1),
-(5, '::1', 'rfan2442@gmail.com', 1, '2022-11-02 19:41:49', 1),
-(6, '::1', 'rfan2442@gmail.com', 1, '2022-11-04 01:52:15', 1),
-(7, '::1', 'rfan2442@gmail.com', 1, '2022-11-04 09:06:06', 1),
-(8, '::1', 'rfanstd24@gmail.com', NULL, '2022-11-04 09:31:30', 0),
-(9, '::1', 'rfan2442@gmail.com', NULL, '2022-11-04 09:31:38', 0),
-(10, '::1', 'rfan2442@gmail.com', NULL, '2022-11-04 09:31:48', 0),
-(11, '::1', 'rifanstd', NULL, '2022-11-04 09:32:05', 0),
-(12, '::1', 'rfan2442@gmail.com', NULL, '2022-11-04 09:33:54', 0),
-(13, '::1', 'rfan2442@gmail.com', 1, '2022-11-04 09:34:05', 1),
-(14, '::1', 'rfan2442@gmail.com', 1, '2022-11-04 10:17:36', 1),
-(15, '::1', 'yogi@gmail.com', 2, '2022-11-04 10:18:55', 1),
-(16, '::1', 'yogi@gmail.com', 2, '2022-11-04 11:28:54', 1),
-(17, '::1', 'yogi@gmail.com', 2, '2022-11-04 12:03:28', 1),
-(18, '::1', 'rfan2442@gmail.com', 1, '2022-11-04 13:04:46', 1),
-(19, '::1', 'rfan2442@gmail.com', 1, '2022-11-04 13:12:53', 1),
-(20, '::1', 'rfan2442@gmail.com', 1, '2022-11-04 22:08:43', 1),
-(21, '::1', 'yogi@gmail.com', 2, '2022-11-04 23:24:43', 1),
-(22, '::1', 'rfan2442@gmail.com', 1, '2022-11-05 02:34:41', 1),
-(23, '::1', 'rfan2442@gmail.com', 1, '2022-11-05 03:19:40', 1),
-(24, '::1', 'ayumna', 4, '2022-11-05 03:43:52', 0),
-(25, '::1', 'rfan2442@gmail.com', 1, '2022-11-05 03:46:20', 1),
-(26, '::1', 'ayumna@gmail.com', 5, '2022-11-05 03:48:33', 1),
-(27, '::1', 'rfanstd24@gmail.com', NULL, '2022-11-08 03:18:30', 0),
-(28, '::1', 'rfan2442@gmail.com', 1, '2022-11-08 03:20:22', 1),
-(29, '::1', 'yogi@gmail.com', 2, '2022-11-08 03:22:48', 1),
-(30, '::1', 'rfan2442@gmail.com', 1, '2022-11-08 03:25:55', 1),
-(31, '::1', 'yogi@gmail.com', 2, '2022-11-08 03:26:11', 1),
-(32, '::1', 'rfan2442@gmail.com', 1, '2022-11-09 20:53:20', 1),
-(33, '::1', 'rfan2442@gmail.com', 1, '2022-11-09 21:44:52', 1),
-(34, '::1', 'rfan2442@gmail.com', 1, '2022-11-09 22:26:53', 1),
-(35, '::1', 'yogi', NULL, '2022-11-09 22:36:07', 0),
-(36, '::1', 'yogi@gmail.com', 2, '2022-11-09 22:36:15', 1),
-(37, '::1', 'yogi@gmail.com', 2, '2022-11-09 22:37:01', 1),
-(38, '::1', 'rfan2442@gmail.com', 1, '2022-11-09 22:37:17', 1),
-(39, '::1', 'yogi@gmail.com', 2, '2022-11-09 22:38:10', 1),
-(40, '::1', 'rfan2442@gmail.com', 1, '2022-11-09 22:39:28', 1),
-(41, '::1', 'yogi@gmail.com', 2, '2022-11-09 22:51:18', 1),
-(42, '::1', 'rfan2442@gmail.com', 1, '2022-11-09 22:53:59', 1),
-(43, '::1', 'rio@gmail.com', 6, '2022-11-09 22:56:27', 1),
-(44, '::1', 'rio', 6, '2022-11-09 23:04:50', 0),
-(45, '::1', 'rfan2442@gmail.com', 1, '2022-11-09 23:07:33', 1),
-(46, '::1', 'ayumna@gmail.com', 7, '2022-11-09 23:27:54', 1),
-(47, '::1', 'yogi@gmail.com', 2, '2022-11-13 03:30:47', 1),
-(48, '::1', 'rfan2442@gmail.com', 1, '2022-11-13 03:44:53', 1),
-(49, '::1', 'ayumna', NULL, '2022-11-13 03:45:15', 0),
-(50, '::1', 'ayumna', NULL, '2022-11-13 03:45:25', 0),
-(51, '::1', 'rfan2442@gmail.com', 1, '2022-11-13 03:45:36', 1),
-(52, '::1', 'ayumna@gmail.com', 8, '2022-11-13 03:47:05', 1),
-(53, '::1', 'yogi', NULL, '2022-11-13 03:48:05', 0),
-(54, '::1', 'yogi@gmail.com', 2, '2022-11-13 03:48:19', 1);
+(1, '::1', 'superadmin@gmail.com', 1, '2022-11-16 07:53:21', 1),
+(2, '::1', 'yogiandaru3@gmail.com', 3, '2022-11-16 08:07:41', 1),
+(3, '::1', 'rfanstd24@gmail.com', 2, '2022-11-16 08:17:23', 1),
+(4, '::1', 'yogiandaru3@gmail.com', 3, '2022-11-16 08:18:07', 1),
+(5, '::1', 'rfanstd24@gmail.com', 2, '2022-11-16 08:19:20', 1),
+(6, '::1', 'yogiandaru3@gmail.com', 3, '2022-11-16 08:23:45', 1),
+(7, '::1', 'rfanstd24@gmail.com', 2, '2022-11-16 08:25:22', 1),
+(8, '::1', 'yogiandaru3@gmail.com', 3, '2022-11-16 08:25:44', 1),
+(9, '::1', 'superadmin@gmail.com', 1, '2022-11-16 22:21:01', 1),
+(10, '::1', 'rfanstd24@gmail.com', NULL, '2022-11-16 22:53:42', 0),
+(11, '::1', 'rfanstd24@gmail.com', 2, '2022-11-16 22:53:50', 1),
+(12, '::1', 'yogiandaru3@gmail.com', 3, '2022-11-16 22:58:14', 1),
+(13, '::1', 'superadmin@gmail.com', 1, '2022-11-16 23:08:30', 1),
+(14, '::1', 'rfanstd24@gmail.com', 2, '2022-11-16 23:11:22', 1),
+(15, '::1', 'rfan2442@gmail.com', 4, '2022-11-16 23:13:11', 0),
+(16, '::1', 'rfan2442@gmail.com', 4, '2022-11-16 23:13:27', 1),
+(17, '::1', 'rfanstd24@gmail.com', 2, '2022-11-16 23:13:45', 1),
+(18, '::1', 'rfan2442@gmail.com', 4, '2022-11-16 23:14:07', 1),
+(19, '::1', 'rfanstd24@gmail.com', 2, '2022-11-16 23:14:51', 1),
+(20, '::1', 'yogiandaru3@gmail.com', NULL, '2022-11-16 23:16:48', 0),
+(21, '::1', 'yogiandaru3@gmail.com', 3, '2022-11-16 23:17:12', 1),
+(22, '::1', 'rfanstd24@gmail.com', 2, '2022-11-16 23:17:51', 1);
 
 -- --------------------------------------------------------
 
@@ -208,6 +185,13 @@ CREATE TABLE `auth_reset_attempts` (
   `token` varchar(255) DEFAULT NULL,
   `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `auth_reset_attempts`
+--
+
+INSERT INTO `auth_reset_attempts` (`id`, `email`, `ip_address`, `user_agent`, `token`, `created_at`) VALUES
+(1, 'yogiandaru3@gmail.com', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36', 'c60b463b111b032cee069ff544e9915e', '2022-11-16 23:16:39');
 
 -- --------------------------------------------------------
 
@@ -250,11 +234,8 @@ CREATE TABLE `fakultas` (
 --
 
 INSERT INTO `fakultas` (`id_fakultas`, `nama_fakultas`) VALUES
-(5, 'FMIPA'),
-(6, 'FISIP'),
-(10, 'FEB'),
-(11, 'FKIP'),
-(12, 'FT');
+(1, 'FMIPA'),
+(2, 'FISIP');
 
 -- --------------------------------------------------------
 
@@ -273,7 +254,8 @@ CREATE TABLE `jurusan` (
 --
 
 INSERT INTO `jurusan` (`id_jurusan`, `nama_jurusan`, `fakultas_id`) VALUES
-(8, 'Ilmu Komputer', 5);
+(1, 'Ilmu Komputer', 1),
+(2, 'Ilmu Komunikasi', 1);
 
 -- --------------------------------------------------------
 
@@ -302,7 +284,8 @@ CREATE TABLE `mahasiswa` (
 --
 
 INSERT INTO `mahasiswa` (`id`, `nama`, `nik`, `npm`, `angkatan`, `kurikulum`, `status`, `jalur_pendaftaran`, `validasi`, `id_user`, `prodi_id`, `jurusan_id`, `fakultas_id`) VALUES
-(1, 'Yogi Andaru', 3603010112129990, 2017051001, 2022, 2020, 'Aktif', 'SBMPTN', 'Valid', 2, 10, 8, 5);
+(1, 'Yogi Andaru', 3603010112129990, 2017051049, 2022, 2022, 'Aktif', 'SBMPTN', 'Valid', 3, 1, 1, 1),
+(2, 'Rifan Setiadi', 3603010112129991, 2017051019, 2022, 2022, 'Aktif', 'SBMPTN', 'Valid', 4, 2, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -338,8 +321,8 @@ CREATE TABLE `prodi` (
 --
 
 INSERT INTO `prodi` (`id_prodi`, `nama_prodi`, `jurusan_id`, `fakultas_id`) VALUES
-(10, 'D3 Ilmu Komputer', 8, 5),
-(11, 'S1 Ilmu Komputer', 8, 5);
+(1, 'S1 Ilmu Komputer', 1, 1),
+(2, 'D3 Manajemen Informatika', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -371,9 +354,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `username`, `password_hash`, `nama`, `reset_hash`, `reset_at`, `reset_expires`, `activate_hash`, `status`, `status_message`, `active`, `force_pass_reset`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'rfan2442@gmail.com', 'rifanstd', '$2y$10$m3WZ6f84DD5SIEs.KSBd8eHPOS4iY6yQhDGDqUqbkfXtJtxd3V.j.', 'Rifan Setiadi', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-10-31 12:20:09', '2022-10-31 12:20:09', NULL),
-(2, 'yogi@gmail.com', 'yogi', '$2y$10$7NNnOASM0bCq43n1Pf78Q.w3RIkWN4nHUBXNDwodITCZy5p.nD8W.', 'Yogi Andaru', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-10-31 12:21:31', '2022-10-31 12:21:31', NULL),
-(8, 'ayumna@gmail.com', 'ayumna', '$2y$10$2BKi0Jo5fdImouevY6mz1ew.6H80iVLy1XDqNpwodQJt4EY6xkhUK', 'Ayumna', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-11-13 03:46:56', '2022-11-13 03:46:56', NULL);
+(1, 'superadmin@gmail.com', 'superadmin', '$2y$10$V0jd7M8mHaHCjsOuw5sTvOYrTLIYcp.f7i2nju4llCmvJXto53QlO', 'Super Admin', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-11-16 07:51:52', '2022-11-16 07:51:52', NULL),
+(2, 'rfanstd24@gmail.com', 'rifanstd', '$2y$10$j.fUi1x/PGB8M3BOkbkVS.UxzAGkKBPzlDoaqqyXc1Eu6GKRlaWpO', 'Rifan Setiadi', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-11-16 07:55:36', '2022-11-16 07:55:36', NULL),
+(3, 'yogiandaru3@gmail.com', 'yogi', '$2y$10$ehb40w5xV0AlJ5fLgwZdVOFwqhOsvmg0ZOJuCYBoHjeasaRtvvQGO', 'Yogi Andaru', NULL, '2022-11-16 23:16:39', NULL, NULL, NULL, NULL, 1, 0, '2022-11-16 08:06:22', '2022-11-16 23:16:39', NULL),
+(4, 'rfan2442@gmail.com', 'rifansetiadi', '$2y$10$gAgBvoig/5QLkP.X3iv91uCr7/ncYYixSrbyTvqD6ZN5xsWa9eGBO', 'Rifan Setiadi', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-11-16 23:12:42', '2022-11-16 23:13:17', NULL);
 
 --
 -- Indexes for dumped tables
@@ -502,13 +486,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id_admin` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_admin` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `auth_activation_attempts`
 --
 ALTER TABLE `auth_activation_attempts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `auth_groups`
@@ -520,7 +504,7 @@ ALTER TABLE `auth_groups`
 -- AUTO_INCREMENT for table `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `auth_permissions`
@@ -532,7 +516,7 @@ ALTER TABLE `auth_permissions`
 -- AUTO_INCREMENT for table `auth_reset_attempts`
 --
 ALTER TABLE `auth_reset_attempts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `auth_tokens`
@@ -544,19 +528,19 @@ ALTER TABLE `auth_tokens`
 -- AUTO_INCREMENT for table `fakultas`
 --
 ALTER TABLE `fakultas`
-  MODIFY `id_fakultas` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_fakultas` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `jurusan`
 --
 ALTER TABLE `jurusan`
-  MODIFY `id_jurusan` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_jurusan` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -568,13 +552,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `prodi`
 --
 ALTER TABLE `prodi`
-  MODIFY `id_prodi` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_prodi` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
