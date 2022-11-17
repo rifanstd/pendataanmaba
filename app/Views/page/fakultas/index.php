@@ -9,7 +9,7 @@
         </div>
     <?php endif; ?>
     <div class="row">
-        <div class="col-6">
+        <div class="col-8">
             <div class="card">
                 <div class="card-header">
                     <h4>Tabel Fakultas</h4>
