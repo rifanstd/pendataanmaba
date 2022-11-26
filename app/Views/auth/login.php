@@ -53,6 +53,13 @@
                             <?php endif; ?>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col">
+                        </div>
+                        <div class="col text-right">
+                            <p><a target="_blank" href="https://drive.google.com/file/d/11xIk3CuwhfxIDSFopHVEdJjMENgyK-bE/view?usp=share_link">Akun Admin Test</a></p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
